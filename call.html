@@ -17,7 +17,7 @@ nav { margin-top:22px; display:flex; flex-direction:column; gap:2px; }
 nav a { color:var(--mute); padding:8px 10px; border-radius:8px; font-size:14px; }
 nav a:hover { color:var(--ink); background:rgba(120,170,255,.08); text-decoration:none; }
 nav a.on { color:var(--ink); background:linear-gradient(90deg, rgba(53,214,255,.16), transparent); box-shadow: inset 2px 0 0 var(--cyan); }
-main { padding:26px clamp(16px,3vw,40px) 60px; max-width:1280px; width:100%; }
+main { padding:26px clamp(16px,3vw,40px) 60px; max-width:1280px; width:100%; min-width:0; }
 h1 { font-weight:300; font-size:26px; letter-spacing:.02em; margin:0 0 18px; }
 h2 { font-weight:500; font-size:15px; margin:0 0 12px; color:var(--ink); }
 .card { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px 20px; margin-bottom:18px; }
@@ -72,6 +72,12 @@ details summary { cursor:pointer; color:var(--cyan); }
 @media (max-width: 820px) { .shell { grid-template-columns:1fr; } aside { position:static; height:auto; border-right:none;
   border-bottom:1px solid var(--line); padding:14px; } nav { flex-direction:row; overflow-x:auto; margin-top:12px; } nav a { white-space:nowrap; } }
 .login { max-width:340px; margin:14vh auto; }
+@media (max-width: 820px) { aside { padding:10px 12px 8px !important; } .brand { font-size:13px; } .brand small { display:none; }
+  nav { margin-top:8px !important; } nav a { padding:7px 10px; }
+  main { padding:14px 12px 40px; } h1 { font-size:21px; } .card { padding:14px; border-radius:12px; }
+  th, td { padding:8px 7px; font-size:13px; } button, .btn { padding:10px 14px; font-size:14px; } input, textarea, select { font-size:16px; }
+  .card > table, .card > form + table { display:block; overflow-x:auto; } .grid { grid-template-columns:repeat(2, 1fr); gap:8px; }
+  .tile .v { font-size:21px; } .funnel div { min-width:92px; } }
 html.embed .shell { grid-template-columns: 1fr; } html.embed aside { display:none; } html.embed main { padding-top:18px; }
 </style>
 <script>if (window.self !== window.top) document.documentElement.classList.add('embed');</script></head>
@@ -82,7 +88,7 @@ html.embed .shell { grid-template-columns: 1fr; } html.embed aside { display:non
       <div><label>Бизнес</label><a href="business.html">Бухгалтерія «Баланс Плюс»</a> </div>
       <div><label>Номер</label><span class="mono">0500000001</span></div>
       <div><label>Итог</label>согласие на СМС</div>
-      <div><label>Время</label>2026-11-11 19:51:54 → 2026-11-11 12:04:10</div>
+      <div><label>Время</label>2026-11-11 21:02:18 → 2026-11-11 12:04:10</div>
     </div><p>Говорила с директором. Согласился на СМС с отчётом, перезвон завтра после обеда.</p><p class="muted">ИИ завершил разговор · токены: услышано 2100 звука, сказано 1400 звука; примерно $0.041</p>
     <div class="actions"></div></div>
     <div class="card"><h2>Разговор — как его слышала модель во время звонка</h2><div class="chat"><div class="m peer">Алло</div><div class="m bot">Добрий день! Це Бухгалтерія Баланс Плюс? Мене звати Софія, я голосовий асистент компанії Quantum Security. Телефоную щодо вашого сайту balans-plus.example — є кілька зауважень із безпеки. Буквально хвилина — зручно зараз?</div><div class="m peer">Так, слухаю. Я директор.</div><div class="m bot">П&#x27;ятого жовтня ліг сайт АТБ — хакери вимагали чотириста тисяч доларів викупу. Ми безкоштовно подивилися відкриті налаштування вашого сайту й знайшли чотири зауваження. Клієнти надсилають вам документи поштою?</div><div class="m peer">Так, звітність і первинку, щодня.</div><div class="m bot">Одне із зауважень якраз про пошту: листа від імені вашого домену може надіслати стороння людина. Я підготувала короткий звіт простою мовою. Надіслати посилання в СМС на цей номер?</div><div class="m peer">Добре, надішліть.</div><div class="m bot">Надіслала, прийде за хвилину. Набрати вас завтра зранку чи після обіду, щоб фахівець відповів на запитання?</div><div class="m peer">Давайте після обіду.</div><div class="m bot">Домовилися, завтра після обіду. Мене звати Софія, Quantum Security. Дякую за час, гарного дня!</div><div class="m sys">СМС на +380500000001: «Quantum Security: безкоштовний звіт щодо сайту balans-plus.example: https://quantum-security.example/r/demo» — sent; согласие: «Добре, надішліть.»</div></div></div>

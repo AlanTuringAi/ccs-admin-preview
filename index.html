@@ -17,7 +17,7 @@ nav { margin-top:22px; display:flex; flex-direction:column; gap:2px; }
 nav a { color:var(--mute); padding:8px 10px; border-radius:8px; font-size:14px; }
 nav a:hover { color:var(--ink); background:rgba(120,170,255,.08); text-decoration:none; }
 nav a.on { color:var(--ink); background:linear-gradient(90deg, rgba(53,214,255,.16), transparent); box-shadow: inset 2px 0 0 var(--cyan); }
-main { padding:26px clamp(16px,3vw,40px) 60px; max-width:1280px; width:100%; }
+main { padding:26px clamp(16px,3vw,40px) 60px; max-width:1280px; width:100%; min-width:0; }
 h1 { font-weight:300; font-size:26px; letter-spacing:.02em; margin:0 0 18px; }
 h2 { font-weight:500; font-size:15px; margin:0 0 12px; color:var(--ink); }
 .card { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px 20px; margin-bottom:18px; }
@@ -72,13 +72,19 @@ details summary { cursor:pointer; color:var(--cyan); }
 @media (max-width: 820px) { .shell { grid-template-columns:1fr; } aside { position:static; height:auto; border-right:none;
   border-bottom:1px solid var(--line); padding:14px; } nav { flex-direction:row; overflow-x:auto; margin-top:12px; } nav a { white-space:nowrap; } }
 .login { max-width:340px; margin:14vh auto; }
+@media (max-width: 820px) { aside { padding:10px 12px 8px !important; } .brand { font-size:13px; } .brand small { display:none; }
+  nav { margin-top:8px !important; } nav a { padding:7px 10px; }
+  main { padding:14px 12px 40px; } h1 { font-size:21px; } .card { padding:14px; border-radius:12px; }
+  th, td { padding:8px 7px; font-size:13px; } button, .btn { padding:10px 14px; font-size:14px; } input, textarea, select { font-size:16px; }
+  .card > table, .card > form + table { display:block; overflow-x:auto; } .grid { grid-template-columns:repeat(2, 1fr); gap:8px; }
+  .tile .v { font-size:21px; } .funnel div { min-width:92px; } }
 html.embed .shell { grid-template-columns: 1fr; } html.embed aside { display:none; } html.embed main { padding-top:18px; }
 </style>
 <script>if (window.self !== window.top) document.documentElement.classList.add('embed');</script></head>
 <body><div class="shell">
 <aside><div class="brand">Quantum<small>call center security</small></div><nav><a href="index.html" class="on">Офис</a><a href="parse.html" class="">Парсинг</a><a href="base.html" class="">База</a><a href="analysis.html" class="">Анализ и личности</a><a href="campaigns.html" class="">Кампании</a><a href="calls.html" class="">Звонки</a><a href="operator.html" class="">Оператор</a><a href="deals.html" class="">Сделки</a><a href="analytics.html" class="">Аналитика</a><a href="training.html" class="">Обучение</a><a href="script.html" class="">Сценарий</a><a href="contracts.html" class="">Договоры</a><a href="runs.html" class="">Проверки по договору</a><a href="settings.html" class="">Настройки</a><a href="journal.html" class="">Журнал</a></nav></aside>
 <main><style>
-.game { position:relative; }
+.game { position:relative; min-width:0; max-width:100%; }
 .topbar { display:flex; gap:10px; align-items:stretch; flex-wrap:wrap; margin-bottom:12px; }
 .topbar .title { font-weight:300; font-size:24px; margin-right:8px; align-self:center; }
 .stat { background:linear-gradient(180deg,#0e1830,#0a1222); border:1px solid var(--line); border-radius:12px; padding:6px 14px;
@@ -150,8 +156,18 @@ html.embed .shell { grid-template-columns: 1fr; } html.embed aside { display:non
   border:1px solid var(--line2); border-radius:14px; padding:7px 11px; font-size:12.5px; line-height:1.35; opacity:0;
   transition:opacity .25s, transform .25s; pointer-events:none; }
 .say.peer { background:#1a2236; } .say.show { opacity:1; transform:translate(-50%, -100%) scale(1); }
+.scene { position:relative; }
 .dock { display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; align-items:center; }
-.toasts { position:absolute; left:14px; bottom:14px; z-index:4; display:flex; flex-direction:column; gap:8px; pointer-events:none; }
+.toasts { position:fixed; left:252px; bottom:18px; z-index:18; display:flex; flex-direction:column; gap:8px; pointer-events:none; }
+.cards { display:none; }
+.ocard { --c:#5d6c8a; display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:14px; text-align:left;
+  background:linear-gradient(180deg,#0e1830,#0a1222); border:1px solid var(--line); border-left:3px solid var(--c); color:var(--ink); }
+.ocard.online { --c:#3ddc97; } .ocard.ringing { --c:#ffb347; } .ocard.talking { --c:#35d6ff; } .ocard.error { --c:#ff3352; }
+.ocard .dot { width:10px; height:10px; border-radius:50%; background:var(--c); box-shadow:0 0 10px 2px var(--c); flex:none; }
+.ocard.ringing .dot, .ocard.talking .dot { animation:pulse .9s ease-in-out infinite; }
+.ocard b { display:block; font-weight:500; font-size:14px; } .ocard small { color:var(--c); font-size:12px; display:block; }
+.ocard em { font-style:normal; color:var(--mute); font-size:11px; display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.ocard > div { min-width:0; }
 .toast { background:rgba(8,18,38,.92); border:1px solid var(--line2); border-left:3px solid var(--cyan); border-radius:10px;
   padding:8px 12px; font-size:13px; animation:toast 5.2s ease forwards; }
 @keyframes toast { 0% { opacity:0; transform:translateX(-16px); } 8%, 86% { opacity:1; transform:none; } 100% { opacity:0; } }
@@ -173,12 +189,36 @@ html.embed .shell { grid-template-columns: 1fr; } html.embed aside { display:non
 .calls-today .t { color:var(--mute); font-size:12px; }
 .veil { position:fixed; inset:0; z-index:19; background:rgba(2,5,12,.55); opacity:0; pointer-events:none; transition:opacity .3s; }
 .veil.on { opacity:1; pointer-events:auto; }
-@media (max-width: 700px) { .name { font-size:24px; } .status { font-size:20px; } .sub { font-size:18px; } .say { max-width:150px; font-size:11px; } }
+@media (max-width: 820px) {
+  main { padding:12px 10px 92px !important; }
+  .topbar { display:grid; grid-template-columns:repeat(4, 1fr); gap:6px; margin-bottom:8px; }
+  .topbar .title { display:none; } .goal { grid-column:1 / -1; padding:7px 12px; }
+  .stat { padding:6px 8px; gap:6px; flex-direction:column; align-items:flex-start; }
+  .stat .ico { display:none; } .stat b { font-size:17px; } .stat span { font-size:9px; letter-spacing:.04em; }
+  .stage { overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; scrollbar-width:none; border-radius:16px;
+    touch-action:pan-x pan-y; }
+  .stage::-webkit-scrollbar { display:none; }
+  .scene { width:880px; } #office { width:880px; max-height:none; }
+  .name { font-size:25px; } .status { font-size:19px; } .sub { font-size:16px; }
+  .desk.off .status { font-size:15px; } .bl { font-size:15px; } .bv { font-size:19px; }
+  .say { max-width:190px; font-size:13px; }
+  .swipe { display:block !important; }
+  .cards { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px; }
+  .dock { position:fixed; left:0; right:0; bottom:0; z-index:17; margin:0; padding:10px; gap:8px; flex-wrap:nowrap; overflow-x:auto;
+    background:rgba(4,9,21,.94); border-top:1px solid var(--line2); backdrop-filter:blur(8px); scrollbar-width:none; }
+  .dock::-webkit-scrollbar { display:none; } .dock button { flex:none; padding:10px 14px; font-size:14px; }
+  .toasts { left:10px; right:10px; bottom:74px; } .toast { font-size:13px; }
+  .drawer, .drawer.wide { width:100vw; } .drawer header { padding:12px 14px; } .drawer .body { padding:14px; }
+  .drawer .x { padding:8px 14px; font-size:16px; } .tabs { padding:10px 14px 0; } .tabs button { padding:8px 14px; font-size:14px; }
+  .row2 button, .row2 .btn { flex:1; padding:11px 12px; font-size:14px; text-align:center; } .row2 input, .row2 select { font-size:16px; padding:11px; flex-basis:100%; }
+  .chat .m { max-width:88%; font-size:14px; }
+}
+.swipe { display:none; text-align:center; color:var(--mute); font-size:11px; margin:6px 0 0; letter-spacing:.04em; }
 @media (prefers-reduced-motion: reduce) { #office *, .toast { animation:none !important; } }
 </style>
 <div class="game">
   <div class="topbar" id="topbar"></div>
-  <div class="stage"><svg id="office" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid meet"><defs>
+  <div class="stage" id="stage"><div class="scene"><svg id="office" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid meet"><defs>
       <linearGradient id="wallR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22407e"/><stop offset="1" stop-color="#172c5c"/></linearGradient>
       <linearGradient id="wallL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b3366"/><stop offset="1" stop-color="#12234a"/></linearGradient>
       <radialGradient id="sky" cx=".5" cy="1" r="1"><stop offset="0" stop-color="#16306b"/><stop offset="1" stop-color="#050b1c"/></radialGradient>
@@ -313,7 +353,10 @@ html.embed .shell { grid-template-columns: 1fr; } html.embed aside { display:non
   </g>
   <text class="sub" x="572" y="559">слот 4</text>
   <rect class="hit" x="531" y="268" width="200" height="302"/>
-</g><g><polygon points="575.2,622.8 606.2,638.3 606.2,664.3 575.2,648.8" fill="#2a1e18" /><polygon points="637.2,622.8 606.2,638.3 606.2,664.3 637.2,648.8" fill="#211712" /><polygon points="606.2,607.3 637.2,622.8 606.2,638.3 575.2,622.8" fill="#3a2a22" /><ellipse class="leaf" cx="597" cy="605" rx="9" ry="20" transform="rotate(-28 597 619)"/><ellipse class="leaf" cx="615" cy="605" rx="9" ry="20" transform="rotate(28 615 619)"/><ellipse class="leaf" cx="606" cy="597" rx="9" ry="20" transform="rotate(0 606 611)"/><ellipse class="leaf" cx="602" cy="609" rx="9" ry="20" transform="rotate(-12 602 623)"/><ellipse class="leaf" cx="611" cy="610" rx="9" ry="20" transform="rotate(14 611 624)"/></g></svg><div class="say" data-port="1" style="left:52.6%;top:11.7%"></div><div class="say" data-port="2" style="left:67.6%;top:24.6%"></div><div class="say" data-port="3" style="left:37.6%;top:24.6%"></div><div class="say" data-port="4" style="left:52.6%;top:37.4%"></div><div class="toasts" id="toasts"></div></div>
+</g><g><polygon points="575.2,622.8 606.2,638.3 606.2,664.3 575.2,648.8" fill="#2a1e18" /><polygon points="637.2,622.8 606.2,638.3 606.2,664.3 637.2,648.8" fill="#211712" /><polygon points="606.2,607.3 637.2,622.8 606.2,638.3 575.2,622.8" fill="#3a2a22" /><ellipse class="leaf" cx="597" cy="605" rx="9" ry="20" transform="rotate(-28 597 619)"/><ellipse class="leaf" cx="615" cy="605" rx="9" ry="20" transform="rotate(28 615 619)"/><ellipse class="leaf" cx="606" cy="597" rx="9" ry="20" transform="rotate(0 606 611)"/><ellipse class="leaf" cx="602" cy="609" rx="9" ry="20" transform="rotate(-12 602 623)"/><ellipse class="leaf" cx="611" cy="610" rx="9" ry="20" transform="rotate(14 611 624)"/></g></svg><div class="say" data-port="1" style="left:52.6%;top:11.7%"></div><div class="say" data-port="2" style="left:67.6%;top:24.6%"></div><div class="say" data-port="3" style="left:37.6%;top:24.6%"></div><div class="say" data-port="4" style="left:52.6%;top:37.4%"></div></div></div>
+  <div class="swipe">↔ листайте зал · нажмите на оператора</div>
+  <div class="toasts" id="toasts"></div>
+  <div class="cards" id="cards"></div>
   <div class="dock" id="dock"></div>
 </div>
 <div class="veil" id="veil"></div>
@@ -324,7 +367,13 @@ html.embed .shell { grid-template-columns: 1fr; } html.embed aside { display:non
 <script>
 const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-let S = null, prev = null, sel = 0, tab = 'live', frame = '';
+let S = null, prev = null, sel = 0, tab = 'live', frame = '', centered = false;
+function focusDesk(port) {   // на телефоне сцена шире экрана — подвинуть её так, чтобы стол был по центру
+  const stage = $('#stage'), el = $(`.desk[data-port="${port}"] .hit`);
+  if (!el || stage.scrollWidth <= stage.clientWidth) return;
+  const r = el.getBoundingClientRect(), s = stage.getBoundingClientRect();
+  stage.scrollTo({left: stage.scrollLeft + r.left + r.width / 2 - s.left - s.width / 2, behavior: 'smooth'});
+}
 const OUT = {sms:'согласие на СМС', callback:'перезвон', transfer:'оператору', interested:'интерес', refused:'отказ',
              dnc:'не звонить', wrong_person:'не тот человек', no_dialog:'разговора не было', hangup:'положил трубку'};
 const ST = {calling:'набор', talking:'разговор', done:'состоялся', noanswer:'не ответил', busy:'занято', failed:'сбой', stopped:'остановлен'};
@@ -337,6 +386,7 @@ async function post(url, data) { alert('Это демо-снимок: дейст
   if (err) alert(err); else if (!r.ok) alert('Действие не выполнено (' + r.status + ')');
   tick(); return ok;
 }
+function put(sel, html) { const el = $(sel); if (el.dataset.html !== html) { el.dataset.html = html; el.innerHTML = html; } }
 function toast(text) {
   const t = document.createElement('div'); t.className = 'toast'; t.textContent = text;
   $('#toasts').appendChild(t); setTimeout(() => t.remove(), 5300);
@@ -355,7 +405,7 @@ function events() {   // что изменилось с прошлого опр�
   if (!prev) return;
   for (const d of S.desks) {
     const was = prev.desks.find(x => x.port === d.port);
-    if (d.call && !was.call) toast(`📞 ${d.name} набирает: ${d.call.name}`);
+    if (d.call && !was.call) { toast(`📞 ${d.name} набирает: ${d.call.name}`); focusDesk(d.port); }
     if (d.call && was.call && d.call.answered && !was.call.answered) toast(`🟢 ${d.name}: клиент ответил`);
     if (!d.call && was.call) { const c = d.calls[0];
       toast(c ? `${c.outcome === 'sms' ? '✉️' : c.status === 'done' ? '✅' : '☎️'} ${d.name}: ${OUT[c.outcome] || ST[c.status] || 'звонок окончен'}` : `${d.name}: звонок окончен`); }
@@ -366,13 +416,13 @@ function events() {   // что изменилось с прошлого опр�
 
 function render() {
   const t = S.today, goal = Math.max(1, S.goal || 30);
-  $('#topbar').innerHTML = `<div class="title">Офис</div>
+  put('#topbar', `<div class="title">Офис</div>
     <div class="goal"><div class="row"><span>План дня: ${t.calls} из ${goal} звонков</span><span>${S.in_hours ? 'рабочие часы' : 'вне часов звонков'}</span></div>
       <div class="track"><i style="width:${Math.min(100, 100 * t.calls / goal)}%"></i></div></div>
     <div class="stat"><div class="ico">✉️</div><div><b>${t.sms}</b><span>согласий</span></div></div>
     <div class="stat"><div class="ico">⭐</div><div><b>${t.score ?? '—'}</b><span>оценка</span></div></div>
     <div class="stat"><div class="ico">💰</div><div><b>$${t.cost.toFixed(2)}</b><span>расход</span></div></div>
-    <div class="stat"><div class="ico">${S.operator_online ? '🟢' : '⚪️'}</div><div><b>${S.operator_online ? 'на месте' : 'нет'}</b><span>человек-оператор</span></div></div>`;
+    <div class="stat"><div class="ico">${S.operator_online ? '🟢' : '⚪️'}</div><div><b>${S.operator_online ? 'на месте' : 'нет'}</b><span>человек-оператор</span></div></div>`);
   for (const k of ['calls', 'answered', 'sms', 'transfer']) $('#b-' + k).textContent = t[k];
   for (const d of S.desks) {
     const el = $(`.desk[data-port="${d.port}"]`), [cls, label] = deskState(d);
@@ -383,13 +433,17 @@ function render() {
     const b = $(`.say[data-port="${d.port}"]`), last = d.call && d.call.transcript.filter(x => x[1]).slice(-1)[0];
     if (last) { b.textContent = last[1].slice(0, 120); b.className = 'say show' + (last[0] === 'bot' ? '' : ' peer'); } else b.className = 'say';
   }
+  put('#cards', S.desks.map(d => { const [cls, label] = deskState(d);
+    const sub = d.call ? esc(d.call.name) : d.sim ? `звонков ${d.stats.calls} · СМС ${d.stats.sms}` : `слот ${d.port} пуст`;
+    return `<button class="ocard ${cls}" onclick="openDesk(${d.port})"><span class="dot"></span><div><b>${esc(d.sim ? d.name : 'Свободное место')}</b><small>${label}</small><em>${sub}</em></div></button>`; }).join(''));
+  if (!centered) { centered = true; focusDesk((S.desks.find(d => d.sim) || S.desks[0]).port); }
   const run = S.campaigns.filter(c => c.status === 'running').length, first = (S.desks.find(d => d.sim) || S.desks[0]).port;
-  $('#dock').innerHTML =
+  put('#dock',
     `<button onclick="openDesk(${first}, 'control')">▶ Управление обзвоном${run ? ' · идёт ' + run : ''}</button>
      <button class="ghost" onclick="post('/operator/toggle')">${S.operator_online ? 'Я ухожу с линии' : 'Я на линии (принимаю переводы)'}</button>
      <button class="ghost" onclick="openFrame('parse.html', 'Парсинг')">🔎 Парсинг${S.parse ? ' · ' + S.parse.done + '/' + S.parse.total : ''}</button>
      <button class="ghost" onclick="openFrame('analysis.html', 'Анализ и личности')">🧠 Анализ${S.analysis ? ' · ' + S.analysis.done + '/' + S.analysis.total : ''}</button>
-     <button class="ghost" onclick="openFrame('analytics.html', 'Аналитика')">📈 Итоги</button>`;
+     <button class="ghost" onclick="openFrame('analytics.html', 'Аналитика')">📈 Итоги</button>`);
   if (sel && !frame) renderDrawer();
 }
 
