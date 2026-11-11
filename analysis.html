@@ -72,9 +72,11 @@ details summary { cursor:pointer; color:var(--cyan); }
 @media (max-width: 820px) { .shell { grid-template-columns:1fr; } aside { position:static; height:auto; border-right:none;
   border-bottom:1px solid var(--line); padding:14px; } nav { flex-direction:row; overflow-x:auto; margin-top:12px; } nav a { white-space:nowrap; } }
 .login { max-width:340px; margin:14vh auto; }
-</style></head>
+html.embed .shell { grid-template-columns: 1fr; } html.embed aside { display:none; } html.embed main { padding-top:18px; }
+</style>
+<script>if (window.self !== window.top) document.documentElement.classList.add('embed');</script></head>
 <body><div class="shell">
-<aside><div class="brand">Quantum<small>call center security</small></div><nav><a href="index.html" class="">Пульт</a><a href="parse.html" class="">Парсинг</a><a href="base.html" class="">База</a><a href="analysis.html" class="on">Анализ и личности</a><a href="campaigns.html" class="">Кампании</a><a href="calls.html" class="">Звонки</a><a href="operator.html" class="">Оператор</a><a href="script.html" class="">Сценарий</a><a href="contracts.html" class="">Договоры</a><a href="runs.html" class="">Проверки по договору</a><a href="settings.html" class="">Настройки</a></nav></aside>
+<aside><div class="brand">Quantum<small>call center security</small></div><nav><a href="index.html" class="">Операторская</a><a href="parse.html" class="">Парсинг</a><a href="base.html" class="">База</a><a href="analysis.html" class="on">Анализ и личности</a><a href="campaigns.html" class="">Кампании</a><a href="calls.html" class="">Звонки</a><a href="operator.html" class="">Оператор</a><a href="deals.html" class="">Сделки</a><a href="analytics.html" class="">Аналитика</a><a href="training.html" class="">Обучение</a><a href="script.html" class="">Сценарий</a><a href="contracts.html" class="">Договоры</a><a href="runs.html" class="">Проверки по договору</a><a href="settings.html" class="">Настройки</a><a href="journal.html" class="">Журнал</a></nav></aside>
 <main><h1>Анализ и личности</h1>
     <div class="note">Проверка пассивная: главная страница, заголовки ответа, сертификат и публичные записи DNS — то, что
     сайт отдаёт любому посетителю. После неё под каждый бизнес создаётся личность ИИ: досье, с которым ассистент

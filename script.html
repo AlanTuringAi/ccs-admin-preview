@@ -72,47 +72,58 @@ details summary { cursor:pointer; color:var(--cyan); }
 @media (max-width: 820px) { .shell { grid-template-columns:1fr; } aside { position:static; height:auto; border-right:none;
   border-bottom:1px solid var(--line); padding:14px; } nav { flex-direction:row; overflow-x:auto; margin-top:12px; } nav a { white-space:nowrap; } }
 .login { max-width:340px; margin:14vh auto; }
-</style></head>
+html.embed .shell { grid-template-columns: 1fr; } html.embed aside { display:none; } html.embed main { padding-top:18px; }
+</style>
+<script>if (window.self !== window.top) document.documentElement.classList.add('embed');</script></head>
 <body><div class="shell">
-<aside><div class="brand">Quantum<small>call center security</small></div><nav><a href="index.html" class="">Пульт</a><a href="parse.html" class="">Парсинг</a><a href="base.html" class="">База</a><a href="analysis.html" class="">Анализ и личности</a><a href="campaigns.html" class="">Кампании</a><a href="calls.html" class="">Звонки</a><a href="operator.html" class="">Оператор</a><a href="script.html" class="on">Сценарий</a><a href="contracts.html" class="">Договоры</a><a href="runs.html" class="">Проверки по договору</a><a href="settings.html" class="">Настройки</a></nav></aside>
+<aside><div class="brand">Quantum<small>call center security</small></div><nav><a href="index.html" class="">Операторская</a><a href="parse.html" class="">Парсинг</a><a href="base.html" class="">База</a><a href="analysis.html" class="">Анализ и личности</a><a href="campaigns.html" class="">Кампании</a><a href="calls.html" class="">Звонки</a><a href="operator.html" class="">Оператор</a><a href="deals.html" class="">Сделки</a><a href="analytics.html" class="">Аналитика</a><a href="training.html" class="">Обучение</a><a href="script.html" class="on">Сценарий</a><a href="contracts.html" class="">Договоры</a><a href="runs.html" class="">Проверки по договору</a><a href="settings.html" class="">Настройки</a><a href="journal.html" class="">Журнал</a></nav></aside>
 <main><h1>Сценарий звонка</h1>
-    <div class="note">Жёсткие правила (честное представление «голосовой ассистент», запрет «вас взломают», СМС только
-    после согласия, «не звоните» → стоп-лист) зашиты в код и отсюда не меняются. Здесь — то, что можно править.</div>
+    <div class="note">Жёсткие правила (об ИИ — честно, если спросили; без выдуманных фактов; СМС только
+    после согласия; «не звоните» → стоп-лист) зашиты в код и отсюда не меняются. Здесь — то, что можно править.</div>
     <form method="post" action="#"><div class="card"><h2>Кто звонит</h2><div class="row">
       <div><label>Компания</label><input name="company_name" value="Quantum Security"></div>
       <div><label>Имя ассистента</label><input name="assistant_name" value="Софія"></div>
       <div><label>Голос</label><select name="voice"><option value="Achernar" selected>Achernar</option><option value="Zephyr">Zephyr</option><option value="Autonoe">Autonoe</option><option value="Vindemiatrix">Vindemiatrix</option></select></div>
-      <div><label>Реплик ИИ на звонок, не больше</label><input name="max_turns" type="number" value="16"></div>
+      <div><label>Язык первой фразы</label><select name="language">
+        <option value="uk" selected>украинский</option>
+        <option value="ru">русский</option></select></div>
+      <div><label>Реплик ИИ на звонок, не больше</label><input name="max_turns" type="number" value="24"></div>
     </div></div>
     <div class="card"><h2>Новости — единственные факты о взломах, которые ИИ вправе называть</h2>
-    <textarea name="news" style="min-height:140px">- Binance, 29 жовтня 2026: найбільшу криптобіржу світу зламали на понад шість мільярдів доларів.
-- АТБ, 5 жовтня 2026: сайт перестав працювати, хакери вимагали чотириста тисяч доларів викупу. Компанія витік даних заперечує — НЕ кажи «вкрали дані».
-- Київстар, грудень 2023: близько двадцяти чотирьох мільйонів абонентів кілька днів без зв&#x27;язку; за даними СБУ, хакери були в системі щонайменше з травня.
-- Держреєстри Мін&#x27;юсту, грудень 2024: відновлення тривало тижні, нотаріуси й бізнес стояли.</textarea>
+    <textarea name="news" style="min-height:140px">- Binance, 29 октября 2026: крупнейшую криптобиржу мира взломали более чем на шесть миллиардов долларов.
+- АТБ, 5 октября 2026: сайт не работал, хакеры требовали четыреста тысяч долларов выкупа (про утечку данных не говори —
+  компания её отрицает).
+- Киевстар, декабрь 2023: хакеры полгода были внутри системы, двадцать четыре миллиона абонентов остались без связи.</textarea>
     <p class="muted">Только проверенное: дата, компания, цифра. Устаревшая или неточная новость рушит доверие.</p></div>
-    <div class="card"><h2>О компании</h2><textarea name="company_facts" style="min-height:150px">{company} — команда з кібербезпеки для малого й середнього бізнесу. Працюємо у три кроки:
-1. Безкоштовний звіт щодо відкритих налаштувань сайту — вже зараз.
-2. Глибока перевірка (пентест) — лише за письмовим договором і лише за адресами, які клієнт сам у ньому вкаже.
-3. Допомога з виправленням — пояснюємо програмісту клієнта, що закрити.
-Без договору ми нічого на сайті клієнта не чіпаємо — це і закон, і наш принцип.
-Ціни: звіт безкоштовний; вартість глибокої перевірки називає фахівець після розмови — сам цифр не вигадуй.</textarea></div>
-    <div class="card"><h2>Возражения</h2><textarea name="objections" style="min-height:300px">Схема відповіді: погодитися → факт → запитання → маленький крок. На одне заперечення — не більше двох спроб.
-- «Звідки у вас мій номер?» — З відкритих джерел: компанія є на Google Картах, там цей номер і сайт. Якщо дзвінок недоречний — скажіть, більше не турбуватиму.
-- «У нас є програміст / студія» — Чудово, тоді звіт саме для нього: там конкретні пункти. Він будує сайт, ми перевіряємо захист збоку. Надіслати, щоб він подивився?
-- «Ми маленькі, кому ми потрібні» — Спеціально вас ніхто не шукає. Автоматична програма перебирає тисячі сайтів і заходить туди, де відчинено. Звіт покаже, чи відчинено у вас. Надіслати?
-- «Скільки це коштує?» — Звіт безкоштовний і ні до чого не зобов&#x27;язує. Вартість глибокої перевірки назве фахівець, коли буде зрозуміло, що перевіряти.
-- «Ви що, лазили по нашому сайту?» — Ні. Ми бачили те саме, що бачить браузер будь-якого відвідувача. Жодного входу чи підбору паролів — це можливо лише за договором із вами.
-- «Це розвод / багато шахраїв» — Правильно, що обережні. Я нічого не прошу: ні паролів, ні доступу, ні оплати. У звіті — назва компанії й контакти, усе можна перевірити.
-- «Немає часу» — Розумію, не затримую. Надішлю посилання в СМС — там на дві хвилини. Можна?
-- «Я подумаю» — Звісно. Думати краще з фактами: звіт надішлю зараз. Коли вас набрати — завтра зранку чи після обіду?
-- «З нами досі нічого не сталося» — І це добре. У Київстарі пів року теж нічого «не ставалося». Перевірка відповідає саме на це запитання.
-- «У нас антивірус / хостинг усе захищає» — Антивірус захищає комп&#x27;ютер, хостинг — свій сервер. За налаштування самого сайту не відповідає ні той, ні той.
-- «Передзвоніть пізніше / через місяць» — Добре, запишу. Коли саме зручно? (потім schedule_callback)
-- «Не дзвоніть більше» — Зрозуміла, перепрошую за турботу. Номер прибираю зі списку. Гарного дня. → do_not_call, end_call. Без «останньої спроби».</textarea></div>
+    <div class="card"><h2>О компании</h2><textarea name="company_facts" style="min-height:150px">{company} — кибербезопасность для малого и среднего бизнеса. Три шага: бесплатный отчёт по открытым настройкам сайта;
+глубокая проверка — только по письменному договору и только по адресам из него; помощь с исправлением.
+Без договора на сайте клиента ничего не трогаем. Отчёт бесплатный; цену глубокой проверки называет специалист.</textarea></div>
+    <div class="card"><h2>Возражения</h2><textarea name="objections" style="min-height:300px">Схема: согласись → довод → вопрос-шаг. До трёх заходов на возражение, каждый с новой стороны; заканчивай шагом «отчёт в СМС».
+- Занят, неудобно: в двух словах — отчёт готов и бесплатный, пришлю в СМС, посмотрите, когда будет минута. На этот номер?
+- Не интересно: так говорят, пока не увидят свой отчёт. Платить не нужно — что вы теряете, если посмотрите?
+- Кто вы, что вам нужно: {company}, защита сайтов бизнеса. Мы проверили ваш сайт, отчёт бесплатный — куда прислать?
+- Откуда номер: из карточки компании на Google Картах — там номер и сайт.
+- Есть программист: отчёт как раз для него — конкретные пункты. Он строит сайт, мы смотрим на защиту со стороны.
+- Мы маленькие: вас не ищут специально — программа перебирает тысячи сайтов и заходит туда, где открыто.
+- Сколько стоит: отчёт бесплатный и ни к чему не обязывает; цену глубокой проверки назовёт специалист.
+- Вы лазили по сайту: нет, видели то же, что браузер любого посетителя; вход — только по договору с вами.
+- Мошенники: правильно, что осторожны. Не прошу ни паролей, ни доступа, ни оплаты; в отчёте — компания и контакты.
+- Подумаю, посоветуюсь: думать лучше с фактами — отчёт пришлю сейчас, а завтра наберу: утром или после обеда?
+- Ничего не случалось: в Киевстаре полгода тоже «ничего не случалось». Не случилось — или не заметили?
+- Антивирус, хостинг: они защищают компьютер и сервер, а за настройки самого сайта не отвечает никто.
+- Перезвоните позже: наберу, но отчёт пришлю сегодня — он готов. На этот номер? (потом schedule_callback)
+- На почту: можно, но в СМС быстрее — ссылка откроется с телефона.
+- Не звоните, уберите номер: извинись → do_not_call → end_call.</textarea></div>
     <div class="card"><h2>Дополнительные указания ИИ</h2><textarea name="script_extra"></textarea></div>
     <div class="card"><h2>Шаблоны СМС</h2><label>Перезвоним <span class="dim mono">{company} {business} {domain} {link}</span></label><textarea name="sms_callback" style="min-height:64px" oninput="count(this)">{company}: дякуємо за розмову! Наш фахівець зателефонує вам найближчим часом.</textarea><div class="muted" data-count></div><label>Отчёт — со ссылкой <span class="dim mono">{company} {business} {domain} {link}</span></label><textarea name="sms_report" style="min-height:64px" oninput="count(this)">{company}: безкоштовний звіт щодо сайту {domain}: {link}</textarea><div class="muted" data-count></div><label>Отчёт — без ссылки (нет публичного адреса) <span class="dim mono">{company} {business} {domain} {link}</span></label><textarea name="sms_report_nolink" style="min-height:64px" oninput="count(this)">{company}: дякуємо за розмову! Звіт щодо сайту {domain} готовий, наш фахівець надішле його вам.</textarea><div class="muted" data-count></div>
     <p class="muted">Кириллица: 70 знаков в одном сообщении, дальше — по 67 на часть.</p></div>
-    <div class="actions"><button>Сохранить сценарий</button></div></form>
+    <div class="actions"><input name="version_note" placeholder="что изменили (для истории версий)" style="max-width:360px">
+    <button>Сохранить сценарий</button></div></form>
+    <div class="card" style="margin-top:18px"><h2>Версии сценария — сравнение по боевым звонкам</h2>
+    <table><thead><tr><th>Версия</th><th>Что изменили</th><th>Звонков</th><th>Разговоров</th><th>Согласий на СМС</th>
+    <th>Оценка</th><th>Пробные собеседники</th><th></th></tr></thead><tbody><tr><td colspan="8" class="muted">версий пока нет — появятся после первого сохранения</td></tr></tbody></table>
+    <p class="muted">Каждое сохранение — новая версия; звонок запоминает, по какой версии шёл. Сравнение честное только
+    при сопоставимом числе звонков.</p></div>
     <script>function count(t){const n=t.value.length, uni=/[^\x00-\x7f]/.test(t.value), one=uni?70:160, part=uni?67:153;
       t.nextElementSibling.textContent=n+' знаков · частей: '+(n<=one?1:Math.ceil(n/part));}
       document.querySelectorAll('textarea[name^=sms_]').forEach(count);</script></main>
