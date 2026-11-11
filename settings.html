@@ -82,7 +82,7 @@ html.embed .shell { grid-template-columns: 1fr; } html.embed aside { display:non
 </style>
 <script>if (window.self !== window.top) document.documentElement.classList.add('embed');</script></head>
 <body><div class="shell">
-<aside><div class="brand">Quantum<small>call center security</small></div><nav><a href="index.html" class="">Офис</a><a href="parse.html" class="">Парсинг</a><a href="base.html" class="">База</a><a href="analysis.html" class="">Анализ и личности</a><a href="campaigns.html" class="">Кампании</a><a href="calls.html" class="">Звонки</a><a href="operator.html" class="">Оператор</a><a href="deals.html" class="">Сделки</a><a href="analytics.html" class="">Аналитика</a><a href="training.html" class="">Обучение</a><a href="script.html" class="">Сценарий</a><a href="contracts.html" class="">Договоры</a><a href="runs.html" class="">Проверки по договору</a><a href="settings.html" class="on">Настройки</a><a href="journal.html" class="">Журнал</a></nav></aside>
+<aside><div class="brand">Quantum<small>call center security</small></div><nav><a href="index.html" class="">Офис</a><a href="parse.html" class="">Парсинг</a><a href="base.html" class="">База</a><a href="analysis.html" class="">Анализ и личности</a><a href="campaigns.html" class="">Кампании</a><a href="calls.html" class="">Звонки</a><a href="operator.html" class="">Оператор</a><a href="deals.html" class="">Сделки</a><a href="leads.html" class="">Заявки и клиенты</a><a href="analytics.html" class="">Аналитика</a><a href="objections.html" class="">Возражения</a><a href="training.html" class="">Обучение</a><a href="script.html" class="">Сценарий</a><a href="contracts.html" class="">Договоры</a><a href="runs.html" class="">Проверки по договору</a><a href="settings.html" class="on">Настройки</a><a href="journal.html" class="">Журнал</a></nav></aside>
 <main><h1>Настройки</h1>
     <div class="card"><h2>Правила набора</h2><form method="post" action="#"><div class="row">
       <div><label>Часы звонков (Киев)</label><input name="call_hours" value="10-18"></div>
@@ -90,6 +90,7 @@ html.embed .shell { grid-template-columns: 1fr; } html.embed aside { display:non
       <div><label>Попыток на номер</label><input name="max_attempts" type="number" value="3"></div>
       <div><label>Пауза между звонками, с</label><input name="pause_between" type="number" value="20"></div>
       <div><label>Мой номер для тестов</label><input name="test_number" value="" placeholder="0501234567"></div>
+      <div><label>Хранить записи и расшифровки, дней</label><input name="retention_days" type="number" min="0" value="90"></div>
       <div><button>Сохранить</button></div></div></form></div>
     <div class="card"><h2>Стоп-лист</h2><form method="post" action="#"><div class="row">
       <div><label>Номер</label><input name="number" placeholder="0671234567"></div>

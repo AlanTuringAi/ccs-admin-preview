@@ -82,7 +82,7 @@ html.embed .shell { grid-template-columns: 1fr; } html.embed aside { display:non
 </style>
 <script>if (window.self !== window.top) document.documentElement.classList.add('embed');</script></head>
 <body><div class="shell">
-<aside><div class="brand">Quantum<small>call center security</small></div><nav><a href="index.html" class="">Офис</a><a href="parse.html" class="on">Парсинг</a><a href="base.html" class="">База</a><a href="analysis.html" class="">Анализ и личности</a><a href="campaigns.html" class="">Кампании</a><a href="calls.html" class="">Звонки</a><a href="operator.html" class="">Оператор</a><a href="deals.html" class="">Сделки</a><a href="analytics.html" class="">Аналитика</a><a href="training.html" class="">Обучение</a><a href="script.html" class="">Сценарий</a><a href="contracts.html" class="">Договоры</a><a href="runs.html" class="">Проверки по договору</a><a href="settings.html" class="">Настройки</a><a href="journal.html" class="">Журнал</a></nav></aside>
+<aside><div class="brand">Quantum<small>call center security</small></div><nav><a href="index.html" class="">Офис</a><a href="parse.html" class="on">Парсинг</a><a href="base.html" class="">База</a><a href="analysis.html" class="">Анализ и личности</a><a href="campaigns.html" class="">Кампании</a><a href="calls.html" class="">Звонки</a><a href="operator.html" class="">Оператор</a><a href="deals.html" class="">Сделки</a><a href="leads.html" class="">Заявки и клиенты</a><a href="analytics.html" class="">Аналитика</a><a href="objections.html" class="">Возражения</a><a href="training.html" class="">Обучение</a><a href="script.html" class="">Сценарий</a><a href="contracts.html" class="">Договоры</a><a href="runs.html" class="">Проверки по договору</a><a href="settings.html" class="">Настройки</a><a href="journal.html" class="">Журнал</a></nav></aside>
 <main><h1>Парсинг Google Maps</h1>
     <div class="card"><h2>Новый парсинг: категория × город</h2>
     <form method="post" action="#"><div class="row">
@@ -90,12 +90,16 @@ html.embed .shell { grid-template-columns: 1fr; } html.embed aside { display:non
       <div><label>или своя фраза</label><input name="category_custom" placeholder="ветеринарная клиника"></div>
       <div><label>Город</label><select name="city"><option value="Киев">Киев</option><option value="Харьков">Харьков</option><option value="Одесса">Одесса</option><option value="Днепр">Днепр</option><option value="Львов">Львов</option><option value="Запорожье">Запорожье</option><option value="Винница">Винница</option><option value="Полтава">Полтава</option><option value="Черкассы">Черкассы</option><option value="Чернигов">Чернигов</option><option value="Житомир">Житомир</option><option value="Хмельницкий">Хмельницкий</option><option value="Ровно">Ровно</option><option value="Ивано-Франковск">Ивано-Франковск</option><option value="Тернополь">Тернополь</option><option value="Луцк">Луцк</option><option value="Ужгород">Ужгород</option><option value="Черновцы">Черновцы</option><option value="Кропивницкий">Кропивницкий</option><option value="Николаев">Николаев</option><option value="Сумы">Сумы</option></select></div>
       <div><label>или другой город</label><input name="city_custom"></div>
-      <div><label>Карточек на задание</label><select name="limit"><option value="20">20</option><option value="40" selected>40</option><option value="80">80</option><option value="120">120</option></select></div>
-      <div><label><input type="checkbox" name="districts"> по районам города</label></div>
+      <div><label>Сколько собрать за запуск</label><select name="total"><option value="100">100</option><option value="300">300</option><option value="500">500</option><option value="1000" selected>1000</option></select></div>
     </div><div class="actions"><button disabled>Запустить парсинг</button>
     <button class="ghost" formaction="#" disabled>Продолжить остановленные</button></div></form>
-    <p class="muted">Одна выдача карт отдаёт до ~120 мест, поэтому крупный город делится на районы. Парсер идёт с
-    домашнего адреса — большие объёмы без нужды не запускайте.</p></div>
+    <p class="muted">Один запуск собирает до 1000 карточек. Одна выдача карт отдаёт до ~120 мест, поэтому запуск сам
+    раскладывается на поисковые фразы категории и районы города. Источник: окно Google Maps (ключ GOOGLE_PLACES_KEY не задан — запасной источник выключен).</p></div>
+    <div class="card"><h2>Прокси парсера</h2><form method="post" action="#">
+      <label>Адреса через запятую или с новой строки (http://логин:пароль@хост:порт); пусто — без прокси</label>
+      <textarea name="proxies" style="min-height:70px"></textarea>
+      <div class="actions"><button class="ghost">Сохранить</button>
+      <span class="muted">Задания берут прокси по кругу. Нужны, когда карты начинают показывать проверку «я не робот».</span></div></form></div>
     <div class="card"><h2>Задания</h2><div class="tablewrap"><table><thead><tr><th>#</th><th>Запрос</th><th>Статус</th>
     <th>Найдено</th><th>В базу</th><th>Уже были</th><th>Сбой</th><th>Осталось</th><th>Создано</th></tr></thead>
     <tbody><tr><td colspan="9" class="muted">заданий ещё не было</td></tr></tbody></table></div></div>

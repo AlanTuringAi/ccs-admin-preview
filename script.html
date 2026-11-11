@@ -82,7 +82,7 @@ html.embed .shell { grid-template-columns: 1fr; } html.embed aside { display:non
 </style>
 <script>if (window.self !== window.top) document.documentElement.classList.add('embed');</script></head>
 <body><div class="shell">
-<aside><div class="brand">Quantum<small>call center security</small></div><nav><a href="index.html" class="">Офис</a><a href="parse.html" class="">Парсинг</a><a href="base.html" class="">База</a><a href="analysis.html" class="">Анализ и личности</a><a href="campaigns.html" class="">Кампании</a><a href="calls.html" class="">Звонки</a><a href="operator.html" class="">Оператор</a><a href="deals.html" class="">Сделки</a><a href="analytics.html" class="">Аналитика</a><a href="training.html" class="">Обучение</a><a href="script.html" class="on">Сценарий</a><a href="contracts.html" class="">Договоры</a><a href="runs.html" class="">Проверки по договору</a><a href="settings.html" class="">Настройки</a><a href="journal.html" class="">Журнал</a></nav></aside>
+<aside><div class="brand">Quantum<small>call center security</small></div><nav><a href="index.html" class="">Офис</a><a href="parse.html" class="">Парсинг</a><a href="base.html" class="">База</a><a href="analysis.html" class="">Анализ и личности</a><a href="campaigns.html" class="">Кампании</a><a href="calls.html" class="">Звонки</a><a href="operator.html" class="">Оператор</a><a href="deals.html" class="">Сделки</a><a href="leads.html" class="">Заявки и клиенты</a><a href="analytics.html" class="">Аналитика</a><a href="objections.html" class="">Возражения</a><a href="training.html" class="">Обучение</a><a href="script.html" class="on">Сценарий</a><a href="contracts.html" class="">Договоры</a><a href="runs.html" class="">Проверки по договору</a><a href="settings.html" class="">Настройки</a><a href="journal.html" class="">Журнал</a></nav></aside>
 <main><h1>Сценарий звонка</h1>
     <div class="note">Жёсткие правила (об ИИ — честно, если спросили; без выдуманных фактов; СМС только
     после согласия; «не звоните» → стоп-лист) зашиты в код и отсюда не меняются. Здесь — то, что можно править.</div>
@@ -124,7 +124,12 @@ html.embed .shell { grid-template-columns: 1fr; } html.embed aside { display:non
     <div class="card"><h2>Шаблоны СМС</h2><label>Перезвоним <span class="dim mono">{company} {business} {domain} {link}</span></label><textarea name="sms_callback" style="min-height:64px" oninput="count(this)">{company}: дякуємо за розмову! Наш фахівець зателефонує вам найближчим часом.</textarea><div class="muted" data-count></div><label>Отчёт — со ссылкой <span class="dim mono">{company} {business} {domain} {link}</span></label><textarea name="sms_report" style="min-height:64px" oninput="count(this)">{company}: безкоштовний звіт щодо сайту {domain}: {link}</textarea><div class="muted" data-count></div><label>Отчёт — без ссылки (нет публичного адреса) <span class="dim mono">{company} {business} {domain} {link}</span></label><textarea name="sms_report_nolink" style="min-height:64px" oninput="count(this)">{company}: дякуємо за розмову! Звіт щодо сайту {domain} готовий, наш фахівець надішле його вам.</textarea><div class="muted" data-count></div>
     <p class="muted">Кириллица: 70 знаков в одном сообщении, дальше — по 67 на часть.</p></div>
     <div class="actions"><input name="version_note" placeholder="что изменили (для истории версий)" style="max-width:360px">
-    <button>Сохранить сценарий</button></div></form>
+    <button>Сохранить как основной</button>
+    <select name="trial_share" style="max-width:260px"><option value="0">или проверить на части звонков…</option>
+      <option value="10">пробная: 10 % звонков</option><option value="20">пробная: 20 % звонков</option>
+      <option value="50">пробная: 50 % звонков</option></select>
+    <button class="ghost">Запустить как пробную</button></div></form>
+    
     <div class="card" style="margin-top:18px"><h2>Версии сценария — сравнение по боевым звонкам</h2>
     <table><thead><tr><th>Версия</th><th>Что изменили</th><th>Звонков</th><th>Разговоров</th><th>Согласий на СМС</th>
     <th>Оценка</th><th>Пробные собеседники</th><th></th></tr></thead><tbody><tr><td colspan="8" class="muted">версий пока нет — появятся после первого сохранения</td></tr></tbody></table>

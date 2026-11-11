@@ -82,7 +82,7 @@ html.embed .shell { grid-template-columns: 1fr; } html.embed aside { display:non
 </style>
 <script>if (window.self !== window.top) document.documentElement.classList.add('embed');</script></head>
 <body><div class="shell">
-<aside><div class="brand">Quantum<small>call center security</small></div><nav><a href="index.html" class="on">Офис</a><a href="parse.html" class="">Парсинг</a><a href="base.html" class="">База</a><a href="analysis.html" class="">Анализ и личности</a><a href="campaigns.html" class="">Кампании</a><a href="calls.html" class="">Звонки</a><a href="operator.html" class="">Оператор</a><a href="deals.html" class="">Сделки</a><a href="analytics.html" class="">Аналитика</a><a href="training.html" class="">Обучение</a><a href="script.html" class="">Сценарий</a><a href="contracts.html" class="">Договоры</a><a href="runs.html" class="">Проверки по договору</a><a href="settings.html" class="">Настройки</a><a href="journal.html" class="">Журнал</a></nav></aside>
+<aside><div class="brand">Quantum<small>call center security</small></div><nav><a href="index.html" class="on">Офис</a><a href="parse.html" class="">Парсинг</a><a href="base.html" class="">База</a><a href="analysis.html" class="">Анализ и личности</a><a href="campaigns.html" class="">Кампании</a><a href="calls.html" class="">Звонки</a><a href="operator.html" class="">Оператор</a><a href="deals.html" class="">Сделки</a><a href="leads.html" class="">Заявки и клиенты</a><a href="analytics.html" class="">Аналитика</a><a href="objections.html" class="">Возражения</a><a href="training.html" class="">Обучение</a><a href="script.html" class="">Сценарий</a><a href="contracts.html" class="">Договоры</a><a href="runs.html" class="">Проверки по договору</a><a href="settings.html" class="">Настройки</a><a href="journal.html" class="">Журнал</a></nav></aside>
 <main><style>
 .game { position:relative; min-width:0; max-width:100%; }
 .topbar { display:flex; gap:10px; align-items:stretch; flex-wrap:wrap; margin-bottom:12px; }
@@ -476,7 +476,8 @@ function renderDrawer(force) {
       <div id="livechat">${chat}</div>
       <div class="row2"><input id="hint" placeholder="Подсказать ИИ: что сказать клиенту сейчас">
         <button class="ghost" onclick="post('/calls/${c.id}/hint', {text: $('#hint').value}).then(() => $('#hint').value = '')">Подсказать</button></div>
-      <div class="row2"><button onclick="confirm('Забрать разговор на софтфон?') && post('/calls/${c.id}/take')">☎ Забрать звонок себе</button>
+      <div class="row2"><button class="ghost" onclick="listenCall(${c.id}, this)">${typeof listenWs !== 'undefined' && listenWs ? '⏹ Не слушать' : '🎧 Слушать'}</button>
+        <button onclick="confirm('Забрать разговор на софтфон?') && post('/calls/${c.id}/take')">☎ Забрать звонок себе</button>
         <button class="danger" onclick="post('/calls/${c.id}/stop')">Положить трубку</button>
         <a class="btn ghost" href="#" target="_blank">Открыть звонок</a></div>`;
     body.scrollTop = body.scrollHeight;
@@ -530,5 +531,25 @@ function clock() { const n = new Date(), h = n.getHours() % 12 + n.getMinutes() 
   $('#hh').setAttribute('transform', `rotate(${h * 30} 26 26)`); $('#mh').setAttribute('transform', `rotate(${m * 6} 26 26)`); }
 clock(); setInterval(clock, 20000);
 tick(); setInterval(tick, 1500);
+</script><script>
+// прослушивание звонка: сервер шлёт кадры по 20 мс (первый байт — сторона: 0 клиент, 1 ИИ), обе стороны играются разом
+let listenWs = null, listenCtx = null;
+function listenCall(id, btn) {
+  if (listenWs) { listenWs.close(); listenWs = null; if (btn) btn.textContent = '🎧 Слушать'; return; }
+  listenCtx = listenCtx || new (window.AudioContext || window.webkitAudioContext)();
+  listenCtx.resume();
+  const next = [0, 0];
+  listenWs = new WebSocket((location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host + '/calls/' + id + '/audio');
+  listenWs.binaryType = 'arraybuffer';
+  if (btn) btn.textContent = '⏹ Не слушать';
+  listenWs.onmessage = e => {
+    const bytes = new Uint8Array(e.data), side = bytes[0];
+    const pcm = new Int16Array(e.data.slice(1)), buf = listenCtx.createBuffer(1, pcm.length, 8000), ch = buf.getChannelData(0);
+    for (let i = 0; i < pcm.length; i++) ch[i] = pcm[i] / 32768;
+    const src = listenCtx.createBufferSource(); src.buffer = buf; src.connect(listenCtx.destination);
+    next[side] = Math.max(listenCtx.currentTime + 0.12, next[side]); src.start(next[side]); next[side] += buf.duration;
+  };
+  listenWs.onclose = () => { listenWs = null; if (btn) btn.textContent = '🎧 Слушать'; };
+}
 </script></main>
 </div><div style="position:fixed;right:14px;bottom:14px;z-index:9;background:#10244d;border:1px solid #35d6ff;color:#e9f1ff;padding:8px 14px;border-radius:12px;font:13px system-ui">Демо: данные вымышленные, кнопки не работают</div><script>document.addEventListener("submit",e=>{e.preventDefault();alert("Это демо-снимок: действия выполняются в настоящей админке.")},true)</script></body></html>
