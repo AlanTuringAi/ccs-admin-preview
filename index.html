@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Операторская — Quantum Security</title><style>
+<title>Офис — Quantum Security</title><style>
 :root { --bg:#03060d; --panel:#0a1222; --panel2:#0e1830; --ink:#e9f1ff; --mute:#8fa0bf; --dim:#5d6c8a;
   --line:rgba(120,170,255,.16); --line2:rgba(120,190,255,.38); --cyan:#35d6ff; --blue:#1e6bff; --red:#ff3352;
   --ok:#3ddc97; --warn:#ffb347; color-scheme: dark; }
@@ -76,72 +76,85 @@ html.embed .shell { grid-template-columns: 1fr; } html.embed aside { display:non
 </style>
 <script>if (window.self !== window.top) document.documentElement.classList.add('embed');</script></head>
 <body><div class="shell">
-<aside><div class="brand">Quantum<small>call center security</small></div><nav><a href="index.html" class="on">Операторская</a><a href="parse.html" class="">Парсинг</a><a href="base.html" class="">База</a><a href="analysis.html" class="">Анализ и личности</a><a href="campaigns.html" class="">Кампании</a><a href="calls.html" class="">Звонки</a><a href="operator.html" class="">Оператор</a><a href="deals.html" class="">Сделки</a><a href="analytics.html" class="">Аналитика</a><a href="training.html" class="">Обучение</a><a href="script.html" class="">Сценарий</a><a href="contracts.html" class="">Договоры</a><a href="runs.html" class="">Проверки по договору</a><a href="settings.html" class="">Настройки</a><a href="journal.html" class="">Журнал</a></nav></aside>
+<aside><div class="brand">Quantum<small>call center security</small></div><nav><a href="index.html" class="on">Офис</a><a href="parse.html" class="">Парсинг</a><a href="base.html" class="">База</a><a href="analysis.html" class="">Анализ и личности</a><a href="campaigns.html" class="">Кампании</a><a href="calls.html" class="">Звонки</a><a href="operator.html" class="">Оператор</a><a href="deals.html" class="">Сделки</a><a href="analytics.html" class="">Аналитика</a><a href="training.html" class="">Обучение</a><a href="script.html" class="">Сценарий</a><a href="contracts.html" class="">Договоры</a><a href="runs.html" class="">Проверки по договору</a><a href="settings.html" class="">Настройки</a><a href="journal.html" class="">Журнал</a></nav></aside>
 <main><style>
-.floor-wrap { position:relative; }
-.hud { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px; }
-.hud .chip { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:8px 14px; min-width:104px; }
-.hud .chip b { display:block; font-size:22px; font-weight:300; font-variant-numeric:tabular-nums; }
-.hud .chip span { color:var(--mute); font-size:11px; text-transform:uppercase; letter-spacing:.08em; }
-.hud .grow { flex:1; }
-.room { position:relative; border:1px solid var(--line); border-radius:20px; overflow:hidden; padding:34px 22px 26px;
-  background:
-    radial-gradient(900px 380px at 50% -8%, rgba(53,214,255,.13), transparent 70%),
-    linear-gradient(180deg, #071022 0%, #040915 100%); }
-.room::before { content:""; position:absolute; inset:0; pointer-events:none; opacity:.5;
-  background-image: linear-gradient(rgba(120,170,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(120,170,255,.07) 1px, transparent 1px);
-  background-size: 44px 44px; transform: perspective(700px) rotateX(58deg) scale(1.9) translateY(18%); transform-origin: 50% 100%;
-  animation: gridmove 14s linear infinite; }
-@keyframes gridmove { to { background-position: 0 44px, 0 0; } }
-.room-title { position:relative; display:flex; justify-content:space-between; align-items:center; margin-bottom:22px;
-  font:11px ui-monospace,Consolas,monospace; letter-spacing:.2em; text-transform:uppercase; color:var(--mute); }
-.room-title i { font-style:normal; color:var(--cyan); }
-.desks { position:relative; display:grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap:18px; }
-@media (max-width: 1100px) { .desks { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .desks { grid-template-columns: 1fr; } }
-.desk { --c: #5d6c8a; position:relative; cursor:pointer; border-radius:18px; padding:14px 12px 12px; text-align:center;
-  background: linear-gradient(180deg, rgba(14,24,48,.72), rgba(6,12,26,.86)); border:1px solid var(--line);
-  transition: transform .35s cubic-bezier(.22,1,.36,1), border-color .3s, box-shadow .3s; }
-.desk:hover, .desk.sel { transform: translateY(-6px); border-color: var(--c); box-shadow: 0 18px 50px -22px var(--c); }
+.game { position:relative; }
+.topbar { display:flex; gap:10px; align-items:stretch; flex-wrap:wrap; margin-bottom:12px; }
+.topbar .title { font-weight:300; font-size:24px; margin-right:8px; align-self:center; }
+.stat { background:linear-gradient(180deg,#0e1830,#0a1222); border:1px solid var(--line); border-radius:12px; padding:6px 14px;
+  display:flex; align-items:center; gap:10px; }
+.stat .ico { font-size:18px; } .stat b { font-size:19px; font-weight:400; font-variant-numeric:tabular-nums; }
+.stat span { color:var(--mute); font-size:11px; text-transform:uppercase; letter-spacing:.08em; display:block; }
+.goal { flex:1; min-width:220px; background:linear-gradient(180deg,#0e1830,#0a1222); border:1px solid var(--line);
+  border-radius:12px; padding:8px 14px; }
+.goal .row { display:flex; justify-content:space-between; font-size:12px; color:var(--mute); gap:8px; }
+.goal .track { height:10px; border-radius:999px; background:rgba(120,170,255,.14); margin-top:6px; overflow:hidden; }
+.goal .track i { display:block; height:100%; width:0; border-radius:999px; transition:width .8s cubic-bezier(.22,1,.36,1);
+  background:linear-gradient(90deg,#1e6bff,#35d6ff,#3ddc97); box-shadow:0 0 14px #35d6ff; }
+.stage { position:relative; border:1px solid var(--line); border-radius:20px; overflow:hidden;
+  background: radial-gradient(900px 480px at 50% 10%, rgba(30,107,255,.28), transparent 72%), #050b1b; }
+#office { display:block; width:100%; height:auto; max-height:calc(100vh - 170px); }
+.sign { font:300 34px system-ui; letter-spacing:.2em; fill:#e9f1ff; filter:drop-shadow(0 0 8px #35d6ff); }
+.sign2 { font:11px ui-monospace,Consolas,monospace; letter-spacing:.16em; fill:#35d6ff; }
+.board { fill:#050c1c; stroke:#35d6ff; stroke-width:1.2; filter:drop-shadow(0 0 10px rgba(53,214,255,.5)); }
+.bh { font:12px ui-monospace,Consolas,monospace; letter-spacing:.24em; fill:#35d6ff; }
+.bl { font:14px system-ui; fill:#a9b9d6; } .bv { font:600 17px ui-monospace,Consolas,monospace; fill:#e9f1ff; text-anchor:end; }
+.win { fill:url(#sky); stroke:#1e3466; stroke-width:2; } .frame { stroke:#1e3466; stroke-width:2; }
+.lit { fill:#0b1a3a; } .lit.l0 { fill:#ffd27a; opacity:.75; animation:blink 7s steps(1) infinite; }
+.lit.l2 { fill:#7fe3ff; opacity:.5; animation:blink 11s steps(1) 3s infinite; }
+@keyframes blink { 50% { opacity:.12; } }
+.clockface { fill:#081226; stroke:#35d6ff; stroke-width:1.5; } .hand { stroke:#e9f1ff; stroke-width:2.4; stroke-linecap:round; }
+.hand.thin { stroke-width:1.4; stroke:#35d6ff; }
+.led { fill:#3ddc97; animation:blink 1.6s steps(1) infinite; } .led.d1 { animation-delay:.3s; fill:#35d6ff; }
+.led.d2 { animation-delay:.7s; } .led.d3 { animation-delay:1.1s; fill:#ffb347; } .led.d4 { animation-delay:.5s; fill:#35d6ff; }
+.leaf { fill:#1f8f5f; stroke:#0f5a3a; stroke-width:1; } .roomba { opacity:.9; }
+.desk { --c:#5d6c8a; cursor:pointer; outline:none; }
 .desk.online { --c:#3ddc97; } .desk.ringing { --c:#ffb347; } .desk.talking { --c:#35d6ff; } .desk.error { --c:#ff3352; }
-.status { display:inline-flex; align-items:center; gap:8px; padding:4px 12px; border-radius:999px; font-size:12px;
-  border:1px solid var(--c); color:var(--c); background:rgba(3,6,13,.6); white-space:nowrap; }
-.status::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--c); box-shadow:0 0 12px 2px var(--c); }
-.desk.online .status::before { animation: breathe 2.6s ease-in-out infinite; }
-.desk.ringing .status::before, .desk.talking .status::before { animation: breathe .8s ease-in-out infinite; }
-@keyframes breathe { 50% { opacity:.35; transform:scale(.7); } }
-.beam { position:absolute; left:50%; top:44px; width:150px; height:200px; transform:translateX(-50%); pointer-events:none;
-  background: radial-gradient(60px 130px at 50% 0, color-mix(in srgb, var(--c) 34%, transparent), transparent 72%); opacity:.9; }
-.desk.off .beam { opacity:.15; }
-.scene { position:relative; height:clamp(176px, 26vh, 260px); margin-top:10px; }
-.scene svg { width:100%; height:100%; overflow:visible; }
-.op { transition: opacity .4s; } .desk.off .op { opacity:.16; }
-.desk.online .op-body { animation: idle 4.5s ease-in-out infinite; transform-origin: 100px 150px; }
-@keyframes idle { 50% { transform: translateY(-1.5px) rotate(-.6deg); } }
-.desk.talking .op-head { animation: nod 1.1s ease-in-out infinite; transform-origin: 100px 78px; }
-@keyframes nod { 50% { transform: rotate(3deg) translateY(-1px); } }
-.desk.ringing .phone { animation: ring .18s linear infinite; transform-origin: 152px 128px; }
-@keyframes ring { 0% { transform: rotate(-7deg); } 50% { transform: rotate(7deg); } 100% { transform: rotate(-7deg); } }
-.arm { transform-origin: 100px 112px; } .desk.talking .arm.l { animation: type .5s ease-in-out infinite; }
-.desk.talking .arm.r { animation: type .5s ease-in-out .25s infinite; }
-@keyframes type { 50% { transform: translateY(-3px); } }
-.wave rect { fill: var(--c); opacity:.25; transform-origin: 50% 100%; transform-box: fill-box; }
-.desk.talking .wave rect { opacity:1; animation: wave .7s ease-in-out infinite; }
-.desk.ringing .wave rect { opacity:.8; animation: wave 1.4s ease-in-out infinite; }
+.desk .hit { fill:transparent; }
+.aura { fill:var(--c); opacity:0; transition:opacity .4s; filter:blur(18px); }
+.desk.online .aura { opacity:.10; } .desk.ringing .aura, .desk.talking .aura { opacity:.24; animation:pulse 1.2s ease-in-out infinite; }
+.desk:hover .aura, .desk.sel .aura, .desk:focus-visible .aura { opacity:.34; }
+@keyframes pulse { 50% { opacity:.10; } }
+.chair { fill:#1d2f58; stroke:#35508f; } .emptychair { fill:rgba(29,47,88,.55); stroke:#4b68a8; stroke-dasharray:5 5; display:none; }
+.desk.off .op { display:none; } .desk.off .emptychair { display:block; }
+.headset { fill:none; stroke:#35d6ff; stroke-width:2.6; } .headset.thin { stroke-width:1.8; } .ear { fill:#35d6ff; }
+.mouth { fill:none; stroke:#7a3b2a; stroke-width:1.6; stroke-linecap:round; }
+.desk.online .op-body { animation:idle 4.6s ease-in-out infinite; }
+@keyframes idle { 50% { transform:translateY(-1.5px); } }
+.desk.talking .op-head { animation:nod 1s ease-in-out infinite; }
+@keyframes nod { 50% { transform:rotate(4deg) translateY(-1px); } }
+.desk.talking .mouth { animation:talk .32s ease-in-out infinite; }
+@keyframes talk { 50% { stroke-width:4; } }
+.desk.talking .arm.l { animation:type .5s ease-in-out infinite; } .desk.talking .arm.r { animation:type .5s ease-in-out .25s infinite; }
+@keyframes type { 50% { transform:translateY(-3px); } }
+.lidglow { fill:var(--c); filter:drop-shadow(0 0 6px var(--c)); } .desk.off .lidglow { fill:#24324e; filter:none; }
+.phoneled { fill:#24324e; } .desk.ringing .phoneled { fill:#ffb347; filter:drop-shadow(0 0 8px #ffb347); }
+.desk.ringing .phone { animation:ring .16s linear infinite; }
+@keyframes ring { 0% { transform:translate(-2px,0) rotate(-12deg); } 50% { transform:translate(2px,0) rotate(12deg); } 100% { transform:translate(-2px,0) rotate(-12deg); } }
+.bob polygon { fill:var(--c); } .bob .shade { fill:#fff; opacity:.28; }
+.bob { animation:bob 2.4s ease-in-out infinite; filter:drop-shadow(0 0 10px var(--c)); }
+.desk.ringing .bob, .desk.talking .bob { animation:bob 1s ease-in-out infinite, spin 1.6s linear infinite; }
+@keyframes bob { 50% { translate:0 -7px; } } @keyframes spin { 50% { scale:.25 1; } }
+.wave rect { fill:var(--c); opacity:0; transform-origin:50% 50%; transform-box:fill-box; }
+.desk.talking .wave rect { opacity:1; animation:wave .7s ease-in-out infinite; }
 .wave rect:nth-child(2) { animation-delay:.1s !important; } .wave rect:nth-child(3) { animation-delay:.22s !important; }
 .wave rect:nth-child(4) { animation-delay:.05s !important; } .wave rect:nth-child(5) { animation-delay:.3s !important; }
 .wave rect:nth-child(6) { animation-delay:.16s !important; } .wave rect:nth-child(7) { animation-delay:.27s !important; }
-@keyframes wave { 0%,100% { transform: scaleY(.25); } 50% { transform: scaleY(1); } }
-.screen { fill:#081428; stroke: var(--c); stroke-width:1.4; filter: drop-shadow(0 0 7px var(--c)); }
-.desk.off .screen { stroke:#24324e; filter:none; }
-.who { font-size:15px; margin-top:2px; } .who small { color:var(--mute); display:block; font-size:12px; min-height:34px; }
-.mini { display:flex; justify-content:center; gap:14px; margin-top:8px; font-size:12px; color:var(--mute); }
-.mini b { color:var(--ink); font-weight:500; }
-.bubble { position:absolute; left:8px; right:8px; top:52px; z-index:2; background:#10244d; border:1px solid var(--line2);
-  border-radius:12px; padding:6px 10px; font-size:12px; line-height:1.35; text-align:left; opacity:0; transform:translateY(6px);
-  transition: opacity .3s, transform .3s; pointer-events:none; max-height:66px; overflow:hidden; }
-.bubble.peer { background:#1a2236; } .bubble.show { opacity:1; transform:none; }
-.quick { position:relative; display:flex; gap:10px; flex-wrap:wrap; margin-top:20px; align-items:center; }
+@keyframes wave { 0%,100% { transform:scaleY(.25); } 50% { transform:scaleY(1.2); } }
+.marker text, .sub { text-anchor:middle; paint-order:stroke; stroke:#040915; stroke-width:5px; stroke-linejoin:round; }
+.name { font:600 19px system-ui; fill:#e9f1ff; } .status { font:14px system-ui; fill:var(--c); }
+.desk.off .name { display:none; } .desk.off .status { fill:#8fa0bf; font-size:12px; } .desk.off .marker { opacity:.8; }
+.desk.off .bob { scale:.6; } .desk.off .marker { translate:0 78px; }
+.sub { font:12px system-ui; fill:#a9b9d6; }
+.say { position:absolute; z-index:3; transform:translate(-50%, -100%) scale(.9); max-width:240px; background:#10244d; color:#e9f1ff;
+  border:1px solid var(--line2); border-radius:14px; padding:7px 11px; font-size:12.5px; line-height:1.35; opacity:0;
+  transition:opacity .25s, transform .25s; pointer-events:none; }
+.say.peer { background:#1a2236; } .say.show { opacity:1; transform:translate(-50%, -100%) scale(1); }
+.dock { display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; align-items:center; }
+.toasts { position:absolute; left:14px; bottom:14px; z-index:4; display:flex; flex-direction:column; gap:8px; pointer-events:none; }
+.toast { background:rgba(8,18,38,.92); border:1px solid var(--line2); border-left:3px solid var(--cyan); border-radius:10px;
+  padding:8px 12px; font-size:13px; animation:toast 5.2s ease forwards; }
+@keyframes toast { 0% { opacity:0; transform:translateX(-16px); } 8%, 86% { opacity:1; transform:none; } 100% { opacity:0; } }
 .drawer { position:fixed; top:0; right:0; bottom:0; width:min(560px, 100vw); z-index:20; background:#070e1e;
   border-left:1px solid var(--line2); box-shadow:-30px 0 80px -30px #000; transform:translateX(102%);
   transition: transform .45s cubic-bezier(.22,1,.36,1); display:flex; flex-direction:column; }
@@ -160,132 +173,148 @@ html.embed .shell { grid-template-columns: 1fr; } html.embed aside { display:non
 .calls-today .t { color:var(--mute); font-size:12px; }
 .veil { position:fixed; inset:0; z-index:19; background:rgba(2,5,12,.55); opacity:0; pointer-events:none; transition:opacity .3s; }
 .veil.on { opacity:1; pointer-events:auto; }
-@media (prefers-reduced-motion: reduce) { .room::before, .desk *, .status::before { animation: none !important; } }
+@media (max-width: 700px) { .name { font-size:24px; } .status { font-size:20px; } .sub { font-size:18px; } .say { max-width:150px; font-size:11px; } }
+@media (prefers-reduced-motion: reduce) { #office *, .toast { animation:none !important; } }
 </style>
-<div class="floor-wrap">
-  <h1>Операторская</h1>
-  <div class="hud" id="hud"></div>
-  <div class="room">
-    <div class="room-title"><span>зал обзвона · <i id="clock"></i></span><span id="roomnote"></span></div>
-    <div class="desks"><div class="desk off" data-port="1">
-  <span class="status">…</span><div class="beam"></div><div class="bubble"></div>
-  <div class="scene"><svg viewBox="0 0 200 176" aria-hidden="true">
-  <g class="op">
-    <rect class="screen" x="62" y="34" width="76" height="50" rx="6"/>
-    <g class="wave" transform="translate(72 44)">
-      <rect x="0" y="0" width="5" height="30" rx="2"/><rect x="8" y="0" width="5" height="30" rx="2"/>
-      <rect x="16" y="0" width="5" height="30" rx="2"/><rect x="24" y="0" width="5" height="30" rx="2"/>
-      <rect x="32" y="0" width="5" height="30" rx="2"/><rect x="40" y="0" width="5" height="30" rx="2"/>
-      <rect x="48" y="0" width="5" height="30" rx="2"/></g>
-    <rect x="96" y="84" width="8" height="10" fill="#1b2a47"/>
-    <g class="op-body">
-      <path d="M70 150 Q70 112 100 110 Q130 112 130 150 Z" fill="#16284a" stroke="rgba(120,190,255,.35)"/>
-      <g class="op-head"><circle cx="100" cy="92" r="16" fill="#e9c9a8"/>
-        <path d="M84 90 Q84 72 100 72 Q116 72 116 90 Q112 80 100 80 Q88 80 84 90Z" fill="#2a1640"/>
-        <path d="M83 92 Q83 70 100 70 Q117 70 117 92" fill="none" stroke="#35d6ff" stroke-width="2.4"/>
-        <rect x="80" y="88" width="6" height="11" rx="3" fill="#35d6ff"/><rect x="114" y="88" width="6" height="11" rx="3" fill="#35d6ff"/>
-        <path d="M84 99 Q88 108 97 106" fill="none" stroke="#35d6ff" stroke-width="1.8"/></g>
-      <rect class="arm l" x="74" y="120" width="12" height="26" rx="6" fill="#1e3763"/>
-      <rect class="arm r" x="114" y="120" width="12" height="26" rx="6" fill="#1e3763"/>
+<div class="game">
+  <div class="topbar" id="topbar"></div>
+  <div class="stage"><svg id="office" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid meet"><defs>
+      <linearGradient id="wallR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22407e"/><stop offset="1" stop-color="#172c5c"/></linearGradient>
+      <linearGradient id="wallL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b3366"/><stop offset="1" stop-color="#12234a"/></linearGradient>
+      <radialGradient id="sky" cx=".5" cy="1" r="1"><stop offset="0" stop-color="#16306b"/><stop offset="1" stop-color="#050b1c"/></radialGradient>
+    </defs><polygon points="600.0,190.0 662.0,221.0 600.0,252.0 538.0,221.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="538.0,221.0 600.0,252.0 538.0,283.0 476.0,252.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="476.0,252.0 538.0,283.0 476.0,314.0 414.0,283.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="414.0,283.0 476.0,314.0 414.0,345.0 352.0,314.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="352.0,314.0 414.0,345.0 352.0,376.0 290.0,345.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="290.0,345.0 352.0,376.0 290.0,407.0 228.0,376.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="228.0,376.0 290.0,407.0 228.0,438.0 166.0,407.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="166.0,407.0 228.0,438.0 166.0,469.0 104.0,438.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="662.0,221.0 724.0,252.0 662.0,283.0 600.0,252.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="600.0,252.0 662.0,283.0 600.0,314.0 538.0,283.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="538.0,283.0 600.0,314.0 538.0,345.0 476.0,314.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="476.0,314.0 538.0,345.0 476.0,376.0 414.0,345.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="414.0,345.0 476.0,376.0 414.0,407.0 352.0,376.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="352.0,376.0 414.0,407.0 352.0,438.0 290.0,407.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="290.0,407.0 352.0,438.0 290.0,469.0 228.0,438.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="228.0,438.0 290.0,469.0 228.0,500.0 166.0,469.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="724.0,252.0 786.0,283.0 724.0,314.0 662.0,283.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="662.0,283.0 724.0,314.0 662.0,345.0 600.0,314.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="600.0,314.0 662.0,345.0 600.0,376.0 538.0,345.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="538.0,345.0 600.0,376.0 538.0,407.0 476.0,376.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="476.0,376.0 538.0,407.0 476.0,438.0 414.0,407.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="414.0,407.0 476.0,438.0 414.0,469.0 352.0,438.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="352.0,438.0 414.0,469.0 352.0,500.0 290.0,469.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="290.0,469.0 352.0,500.0 290.0,531.0 228.0,500.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="786.0,283.0 848.0,314.0 786.0,345.0 724.0,314.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="724.0,314.0 786.0,345.0 724.0,376.0 662.0,345.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="662.0,345.0 724.0,376.0 662.0,407.0 600.0,376.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="600.0,376.0 662.0,407.0 600.0,438.0 538.0,407.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="538.0,407.0 600.0,438.0 538.0,469.0 476.0,438.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="476.0,438.0 538.0,469.0 476.0,500.0 414.0,469.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="414.0,469.0 476.0,500.0 414.0,531.0 352.0,500.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="352.0,500.0 414.0,531.0 352.0,562.0 290.0,531.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="848.0,314.0 910.0,345.0 848.0,376.0 786.0,345.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="786.0,345.0 848.0,376.0 786.0,407.0 724.0,376.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="724.0,376.0 786.0,407.0 724.0,438.0 662.0,407.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="662.0,407.0 724.0,438.0 662.0,469.0 600.0,438.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="600.0,438.0 662.0,469.0 600.0,500.0 538.0,469.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="538.0,469.0 600.0,500.0 538.0,531.0 476.0,500.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="476.0,500.0 538.0,531.0 476.0,562.0 414.0,531.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="414.0,531.0 476.0,562.0 414.0,593.0 352.0,562.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="910.0,345.0 972.0,376.0 910.0,407.0 848.0,376.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="848.0,376.0 910.0,407.0 848.0,438.0 786.0,407.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="786.0,407.0 848.0,438.0 786.0,469.0 724.0,438.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="724.0,438.0 786.0,469.0 724.0,500.0 662.0,469.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="662.0,469.0 724.0,500.0 662.0,531.0 600.0,500.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="600.0,500.0 662.0,531.0 600.0,562.0 538.0,531.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="538.0,531.0 600.0,562.0 538.0,593.0 476.0,562.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="476.0,562.0 538.0,593.0 476.0,624.0 414.0,593.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="972.0,376.0 1034.0,407.0 972.0,438.0 910.0,407.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="910.0,407.0 972.0,438.0 910.0,469.0 848.0,438.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="848.0,438.0 910.0,469.0 848.0,500.0 786.0,469.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="786.0,469.0 848.0,500.0 786.0,531.0 724.0,500.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="724.0,500.0 786.0,531.0 724.0,562.0 662.0,531.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="662.0,531.0 724.0,562.0 662.0,593.0 600.0,562.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="600.0,562.0 662.0,593.0 600.0,624.0 538.0,593.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="538.0,593.0 600.0,624.0 538.0,655.0 476.0,624.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="1034.0,407.0 1096.0,438.0 1034.0,469.0 972.0,438.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="972.0,438.0 1034.0,469.0 972.0,500.0 910.0,469.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="910.0,469.0 972.0,500.0 910.0,531.0 848.0,500.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="848.0,500.0 910.0,531.0 848.0,562.0 786.0,531.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="786.0,531.0 848.0,562.0 786.0,593.0 724.0,562.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="724.0,562.0 786.0,593.0 724.0,624.0 662.0,593.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="662.0,593.0 724.0,624.0 662.0,655.0 600.0,624.0" fill="#182c5a" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="600.0,624.0 662.0,655.0 600.0,686.0 538.0,655.0" fill="#14254d" stroke="rgba(140,190,255,.16)" stroke-width="1"/><polygon points="600.0,190.0 1096.0,438.0 1096.0,258.0 600.0,10.0" fill="url(#wallR)" /><polygon points="600.0,190.0 104.0,438.0 104.0,258.0 600.0,10.0" fill="url(#wallL)" /><polygon points="600.0,10.0 1096.0,258.0 1096.0,252.0 600.0,4.0" fill="#35d6ff" opacity=".55"/><polygon points="600.0,10.0 104.0,258.0 104.0,252.0 600.0,4.0" fill="#35d6ff" opacity=".35"/><g transform="matrix(1 .5 0 1 631 44)">
+      <text class="sign" x="0" y="26">QUANTUM</text><text class="sign2" x="2" y="46">SECURITY · CALL CENTER</text>
+      <g transform="translate(250 0)"><rect class="board" width="220" height="128" rx="8"/>
+        <text class="bh" x="14" y="24">СЕГОДНЯ</text>
+        <text class="bl" x="14" y="50">звонков</text><text class="bv" id="b-calls" x="206" y="50">0</text>
+        <text class="bl" x="14" y="72">разговоров</text><text class="bv" id="b-answered" x="206" y="72">0</text>
+        <text class="bl" x="14" y="94">согласий на СМС</text><text class="bv" id="b-sms" x="206" y="94">0</text>
+        <text class="bl" x="14" y="116">оператору</text><text class="bv" id="b-transfer" x="206" y="116">0</text></g></g><g transform="matrix(1 -.5 0 1 135 276)"><g transform="translate(0 0)"><rect class="win" width="96" height="92" rx="4"/><rect class="lit l0" x="8" y="50" width="9" height="30"/><rect class="lit l1" x="25" y="57" width="9" height="25"/><rect class="lit l2" x="42" y="55" width="9" height="20"/><rect class="lit l3" x="59" y="53" width="9" height="15"/><rect class="lit l0" x="76" y="51" width="9" height="26"/><rect class="lit l1" x="8" y="71" width="9" height="21"/><rect class="lit l2" x="25" y="69" width="9" height="16"/><rect class="lit l3" x="42" y="67" width="9" height="27"/><rect class="lit l0" x="59" y="65" width="9" height="22"/><rect class="lit l1" x="76" y="63" width="9" height="17"/><line x1="48" y1="0" x2="48" y2="92" class="frame"/></g><g transform="translate(118 0)"><rect class="win" width="96" height="92" rx="4"/><rect class="lit l1" x="8" y="53" width="9" height="30"/><rect class="lit l2" x="25" y="51" width="9" height="25"/><rect class="lit l3" x="42" y="58" width="9" height="20"/><rect class="lit l0" x="59" y="56" width="9" height="15"/><rect class="lit l1" x="76" y="54" width="9" height="26"/><rect class="lit l2" x="8" y="65" width="9" height="21"/><rect class="lit l3" x="25" y="63" width="9" height="16"/><rect class="lit l0" x="42" y="70" width="9" height="27"/><rect class="lit l1" x="59" y="68" width="9" height="22"/><rect class="lit l2" x="76" y="66" width="9" height="17"/><line x1="48" y1="0" x2="48" y2="92" class="frame"/></g><g transform="translate(236 0)"><rect class="win" width="96" height="92" rx="4"/><rect class="lit l2" x="8" y="56" width="9" height="30"/><rect class="lit l3" x="25" y="54" width="9" height="25"/><rect class="lit l0" x="42" y="52" width="9" height="20"/><rect class="lit l1" x="59" y="50" width="9" height="15"/><rect class="lit l2" x="76" y="57" width="9" height="26"/><rect class="lit l3" x="8" y="68" width="9" height="21"/><rect class="lit l0" x="25" y="66" width="9" height="16"/><rect class="lit l1" x="42" y="64" width="9" height="27"/><rect class="lit l2" x="59" y="71" width="9" height="22"/><rect class="lit l3" x="76" y="69" width="9" height="17"/><line x1="48" y1="0" x2="48" y2="92" class="frame"/></g><g transform="translate(366 10)"><circle class="clockface" cx="26" cy="26" r="24"/><line id="hh" class="hand" x1="26" y1="26" x2="26" y2="13"/><line id="mh" class="hand thin" x1="26" y1="26" x2="26" y2="7"/></g></g><polygon points="609.3,386.9 674.4,419.4 457.4,527.9 392.3,495.3" fill="rgba(53,214,255,.07)" stroke="rgba(53,214,255,.25)" stroke-dasharray="4 6"/><g class="roomba"><ellipse rx="13" ry="7" fill="#1c2f57" stroke="#35d6ff" stroke-width="1"/><circle r="2" fill="#3ddc97"/><animateMotion dur="46s" repeatCount="indefinite" path="M185,447 L544,627 L935,432 L761,345 L408,522 L222,429 L185,447"/></g><g><polygon points="562.8,204.3 593.8,219.8 593.8,245.8 562.8,230.3" fill="#2a1e18" /><polygon points="624.8,204.3 593.8,219.8 593.8,245.8 624.8,230.3" fill="#211712" /><polygon points="593.8,188.8 624.8,204.3 593.8,219.8 562.8,204.3" fill="#3a2a22" /><ellipse class="leaf" cx="585" cy="186" rx="9" ry="20" transform="rotate(-28 585 200)"/><ellipse class="leaf" cx="603" cy="186" rx="9" ry="20" transform="rotate(28 603 200)"/><ellipse class="leaf" cx="594" cy="178" rx="9" ry="20" transform="rotate(0 594 192)"/><ellipse class="leaf" cx="590" cy="190" rx="9" ry="20" transform="rotate(-12 590 204)"/><ellipse class="leaf" cx="599" cy="191" rx="9" ry="20" transform="rotate(14 599 205)"/></g><g class="desk off" data-port="1" tabindex="0">
+  <ellipse class="aura" cx="631" cy="354" rx="96" ry="44"/>
+  <g class="op" transform="translate(631 320) scale(1.45) translate(-631 -320)">
+    <rect class="chair" x="610" y="246" width="42" height="56" rx="12"/>
+    <g class="op-body" style="transform-origin:631px 320px">
+      <path d="M608 312 Q608 270 631 268 Q654 270 654 312 Z" fill="#1e6bff"/>
+      <rect class="arm l" x="604" y="280" width="10" height="26" rx="5" fill="#1e6bff"/>
+      <rect class="arm r" x="648" y="280" width="10" height="26" rx="5" fill="#1e6bff"/>
+      <g class="op-head" style="transform-origin:631px 268px">
+        <circle cx="631" cy="254" r="14" fill="#f0cdaa"/>
+        <path d="M616 254 Q615 236 631 236 Q647 236 646 254 Q641 244 631 244 Q621 244 616 254Z" fill="#2a1640"/>
+        <circle cx="626" cy="255" r="1.6" fill="#1a1a2a"/><circle cx="636" cy="255" r="1.6" fill="#1a1a2a"/>
+        <path class="mouth" d="M627 261 Q631 264 635 261"/>
+        <path d="M616 254 Q616 234 631 234 Q646 234 646 254" class="headset"/>
+        <rect x="612" y="249" width="6" height="11" rx="3" class="ear"/><rect x="644" y="249" width="6" height="11" rx="3" class="ear"/>
+        <path d="M615 259 Q618 267 626 265" class="headset thin"/>
+      </g>
     </g>
-    <g class="phone"><rect x="144" y="120" width="16" height="24" rx="4" fill="#0e1830" stroke="var(--c)"/>
-      <circle cx="152" cy="139" r="1.6" fill="var(--c)"/></g>
   </g>
-  <path d="M22 148 H178 L190 170 H10 Z" fill="#0c1730" stroke="rgba(120,190,255,.4)"/>
-  <rect x="10" y="170" width="180" height="5" rx="2" fill="#081022"/>
-</svg></div>
-  <div class="who"><span class="name">Софія</span> <small>линия 1</small></div>
-  <div class="mini"><span>звонков <b data-k="calls">0</b></span><span>СМС <b data-k="sms">0</b></span><span>оценка <b data-k="score">—</b></span></div>
-</div><div class="desk off" data-port="2">
-  <span class="status">…</span><div class="beam"></div><div class="bubble"></div>
-  <div class="scene"><svg viewBox="0 0 200 176" aria-hidden="true">
-  <g class="op">
-    <rect class="screen" x="62" y="34" width="76" height="50" rx="6"/>
-    <g class="wave" transform="translate(72 44)">
-      <rect x="0" y="0" width="5" height="30" rx="2"/><rect x="8" y="0" width="5" height="30" rx="2"/>
-      <rect x="16" y="0" width="5" height="30" rx="2"/><rect x="24" y="0" width="5" height="30" rx="2"/>
-      <rect x="32" y="0" width="5" height="30" rx="2"/><rect x="40" y="0" width="5" height="30" rx="2"/>
-      <rect x="48" y="0" width="5" height="30" rx="2"/></g>
-    <rect x="96" y="84" width="8" height="10" fill="#1b2a47"/>
-    <g class="op-body">
-      <path d="M70 150 Q70 112 100 110 Q130 112 130 150 Z" fill="#16284a" stroke="rgba(120,190,255,.35)"/>
-      <g class="op-head"><circle cx="100" cy="92" r="16" fill="#e9c9a8"/>
-        <path d="M84 90 Q84 72 100 72 Q116 72 116 90 Q112 80 100 80 Q88 80 84 90Z" fill="#2a1640"/>
-        <path d="M83 92 Q83 70 100 70 Q117 70 117 92" fill="none" stroke="#35d6ff" stroke-width="2.4"/>
-        <rect x="80" y="88" width="6" height="11" rx="3" fill="#35d6ff"/><rect x="114" y="88" width="6" height="11" rx="3" fill="#35d6ff"/>
-        <path d="M84 99 Q88 108 97 106" fill="none" stroke="#35d6ff" stroke-width="1.8"/></g>
-      <rect class="arm l" x="74" y="120" width="12" height="26" rx="6" fill="#1e3763"/>
-      <rect class="arm r" x="114" y="120" width="12" height="26" rx="6" fill="#1e3763"/>
+  <rect class="emptychair" x="601" y="216" width="60" height="80" rx="16"/>
+  <polygon points="519.4,289.3 624.8,342.0 624.8,376.0 519.4,323.3" fill="#27407c" /><polygon points="674.4,317.2 624.8,342.0 624.8,376.0 674.4,351.2" fill="#1d3266" /><polygon points="569.0,264.5 674.4,317.2 624.8,342.0 519.4,289.3" fill="#3a5aa6" /><polygon points="596.9,261.8 629.1,277.9 629.1,303.9 596.9,287.8" fill="#0c152b" /><polygon points="632.2,276.3 629.1,277.9 629.1,303.9 632.2,302.3" fill="#0c152b" /><polygon points="600.0,260.2 632.2,276.3 629.1,277.9 596.9,261.8" fill="#101c38" /><polygon points="611.8,316.6 621.7,321.6 621.7,325.6 611.8,320.6" fill="#0c152b" /><polygon points="637.8,313.5 621.7,321.6 621.7,325.6 637.8,317.5" fill="#0c152b" /><polygon points="627.9,308.5 637.8,313.5 621.7,321.6 611.8,316.6" fill="#101c38" />
+  <circle class="lidglow" cx="613" cy="283" r="4"/>
+  <g class="phone" style="transform-origin:625px 311px"><circle class="phoneled" cx="625" cy="311" r="3"/></g>
+  <g class="marker" transform="translate(631 148)">
+    <g class="bob"><polygon points="0,-16 9,0 0,16 -9,0"/><polygon class="shade" points="0,-16 9,0 0,16"/></g>
+    <g class="wave" transform="translate(-21 24)"><rect x="0" y="0" width="4" height="14" rx="2"/><rect x="6" y="0" width="4" height="14" rx="2"/><rect x="12" y="0" width="4" height="14" rx="2"/><rect x="18" y="0" width="4" height="14" rx="2"/><rect x="24" y="0" width="4" height="14" rx="2"/><rect x="30" y="0" width="4" height="14" rx="2"/><rect x="36" y="0" width="4" height="14" rx="2"/></g>
+    <text class="status" y="-28">…</text>
+    <text class="name" y="-48">Софія</text>
+  </g>
+  <text class="sub" x="572" y="380">слот 1</text>
+  <rect class="hit" x="531" y="88" width="200" height="302"/>
+</g><g class="desk off" data-port="2" tabindex="0">
+  <ellipse class="aura" cx="811" cy="444" rx="96" ry="44"/>
+  <g class="op" transform="translate(811 410) scale(1.45) translate(-811 -410)">
+    <rect class="chair" x="790" y="336" width="42" height="56" rx="12"/>
+    <g class="op-body" style="transform-origin:811px 410px">
+      <path d="M788 402 Q788 360 811 358 Q834 360 834 402 Z" fill="#b08cff"/>
+      <rect class="arm l" x="784" y="370" width="10" height="26" rx="5" fill="#b08cff"/>
+      <rect class="arm r" x="828" y="370" width="10" height="26" rx="5" fill="#b08cff"/>
+      <g class="op-head" style="transform-origin:811px 358px">
+        <circle cx="811" cy="344" r="14" fill="#f0cdaa"/>
+        <path d="M796 344 Q795 326 811 326 Q827 326 826 344 Q821 334 811 334 Q801 334 796 344Z" fill="#7a3b12"/>
+        <circle cx="806" cy="345" r="1.6" fill="#1a1a2a"/><circle cx="816" cy="345" r="1.6" fill="#1a1a2a"/>
+        <path class="mouth" d="M807 351 Q811 354 815 351"/>
+        <path d="M796 344 Q796 324 811 324 Q826 324 826 344" class="headset"/>
+        <rect x="792" y="339" width="6" height="11" rx="3" class="ear"/><rect x="824" y="339" width="6" height="11" rx="3" class="ear"/>
+        <path d="M795 349 Q798 357 806 355" class="headset thin"/>
+      </g>
     </g>
-    <g class="phone"><rect x="144" y="120" width="16" height="24" rx="4" fill="#0e1830" stroke="var(--c)"/>
-      <circle cx="152" cy="139" r="1.6" fill="var(--c)"/></g>
   </g>
-  <path d="M22 148 H178 L190 170 H10 Z" fill="#0c1730" stroke="rgba(120,190,255,.4)"/>
-  <rect x="10" y="170" width="180" height="5" rx="2" fill="#081022"/>
-</svg></div>
-  <div class="who"><span class="name">Марія</span> <small>линия 2</small></div>
-  <div class="mini"><span>звонков <b data-k="calls">0</b></span><span>СМС <b data-k="sms">0</b></span><span>оценка <b data-k="score">—</b></span></div>
-</div><div class="desk off" data-port="3">
-  <span class="status">…</span><div class="beam"></div><div class="bubble"></div>
-  <div class="scene"><svg viewBox="0 0 200 176" aria-hidden="true">
-  <g class="op">
-    <rect class="screen" x="62" y="34" width="76" height="50" rx="6"/>
-    <g class="wave" transform="translate(72 44)">
-      <rect x="0" y="0" width="5" height="30" rx="2"/><rect x="8" y="0" width="5" height="30" rx="2"/>
-      <rect x="16" y="0" width="5" height="30" rx="2"/><rect x="24" y="0" width="5" height="30" rx="2"/>
-      <rect x="32" y="0" width="5" height="30" rx="2"/><rect x="40" y="0" width="5" height="30" rx="2"/>
-      <rect x="48" y="0" width="5" height="30" rx="2"/></g>
-    <rect x="96" y="84" width="8" height="10" fill="#1b2a47"/>
-    <g class="op-body">
-      <path d="M70 150 Q70 112 100 110 Q130 112 130 150 Z" fill="#16284a" stroke="rgba(120,190,255,.35)"/>
-      <g class="op-head"><circle cx="100" cy="92" r="16" fill="#e9c9a8"/>
-        <path d="M84 90 Q84 72 100 72 Q116 72 116 90 Q112 80 100 80 Q88 80 84 90Z" fill="#2a1640"/>
-        <path d="M83 92 Q83 70 100 70 Q117 70 117 92" fill="none" stroke="#35d6ff" stroke-width="2.4"/>
-        <rect x="80" y="88" width="6" height="11" rx="3" fill="#35d6ff"/><rect x="114" y="88" width="6" height="11" rx="3" fill="#35d6ff"/>
-        <path d="M84 99 Q88 108 97 106" fill="none" stroke="#35d6ff" stroke-width="1.8"/></g>
-      <rect class="arm l" x="74" y="120" width="12" height="26" rx="6" fill="#1e3763"/>
-      <rect class="arm r" x="114" y="120" width="12" height="26" rx="6" fill="#1e3763"/>
+  <rect class="emptychair" x="781" y="306" width="60" height="80" rx="16"/>
+  <polygon points="699.2,379.2 804.6,431.9 804.6,465.9 699.2,413.2" fill="#27407c" /><polygon points="854.2,407.1 804.6,431.9 804.6,465.9 854.2,441.1" fill="#1d3266" /><polygon points="748.8,354.4 854.2,407.1 804.6,431.9 699.2,379.2" fill="#3a5aa6" /><polygon points="776.7,351.6 808.9,367.8 808.9,393.8 776.7,377.6" fill="#0c152b" /><polygon points="812.0,366.2 808.9,367.8 808.9,393.8 812.0,392.2" fill="#0c152b" /><polygon points="779.8,350.1 812.0,366.2 808.9,367.8 776.7,351.6" fill="#101c38" /><polygon points="791.6,406.5 801.5,411.5 801.5,415.5 791.6,410.5" fill="#0c152b" /><polygon points="817.6,403.4 801.5,411.5 801.5,415.5 817.6,407.4" fill="#0c152b" /><polygon points="807.7,398.5 817.6,403.4 801.5,411.5 791.6,406.5" fill="#101c38" />
+  <circle class="lidglow" cx="793" cy="373" r="4"/>
+  <g class="phone" style="transform-origin:805px 401px"><circle class="phoneled" cx="805" cy="401" r="3"/></g>
+  <g class="marker" transform="translate(811 238)">
+    <g class="bob"><polygon points="0,-16 9,0 0,16 -9,0"/><polygon class="shade" points="0,-16 9,0 0,16"/></g>
+    <g class="wave" transform="translate(-21 24)"><rect x="0" y="0" width="4" height="14" rx="2"/><rect x="6" y="0" width="4" height="14" rx="2"/><rect x="12" y="0" width="4" height="14" rx="2"/><rect x="18" y="0" width="4" height="14" rx="2"/><rect x="24" y="0" width="4" height="14" rx="2"/><rect x="30" y="0" width="4" height="14" rx="2"/><rect x="36" y="0" width="4" height="14" rx="2"/></g>
+    <text class="status" y="-28">…</text>
+    <text class="name" y="-48">Марія</text>
+  </g>
+  <text class="sub" x="752" y="470">слот 2</text>
+  <rect class="hit" x="711" y="178" width="200" height="302"/>
+</g><g class="desk off" data-port="3" tabindex="0">
+  <ellipse class="aura" cx="451" cy="444" rx="96" ry="44"/>
+  <g class="op" transform="translate(451 410) scale(1.45) translate(-451 -410)">
+    <rect class="chair" x="430" y="336" width="42" height="56" rx="12"/>
+    <g class="op-body" style="transform-origin:451px 410px">
+      <path d="M428 402 Q428 360 451 358 Q474 360 474 402 Z" fill="#2bb8a6"/>
+      <rect class="arm l" x="424" y="370" width="10" height="26" rx="5" fill="#2bb8a6"/>
+      <rect class="arm r" x="468" y="370" width="10" height="26" rx="5" fill="#2bb8a6"/>
+      <g class="op-head" style="transform-origin:451px 358px">
+        <circle cx="451" cy="344" r="14" fill="#f0cdaa"/>
+        <path d="M436 344 Q435 326 451 326 Q467 326 466 344 Q461 334 451 334 Q441 334 436 344Z" fill="#101826"/>
+        <circle cx="446" cy="345" r="1.6" fill="#1a1a2a"/><circle cx="456" cy="345" r="1.6" fill="#1a1a2a"/>
+        <path class="mouth" d="M447 351 Q451 354 455 351"/>
+        <path d="M436 344 Q436 324 451 324 Q466 324 466 344" class="headset"/>
+        <rect x="432" y="339" width="6" height="11" rx="3" class="ear"/><rect x="464" y="339" width="6" height="11" rx="3" class="ear"/>
+        <path d="M435 349 Q438 357 446 355" class="headset thin"/>
+      </g>
     </g>
-    <g class="phone"><rect x="144" y="120" width="16" height="24" rx="4" fill="#0e1830" stroke="var(--c)"/>
-      <circle cx="152" cy="139" r="1.6" fill="var(--c)"/></g>
   </g>
-  <path d="M22 148 H178 L190 170 H10 Z" fill="#0c1730" stroke="rgba(120,190,255,.4)"/>
-  <rect x="10" y="170" width="180" height="5" rx="2" fill="#081022"/>
-</svg></div>
-  <div class="who"><span class="name">Олена</span> <small>линия 3</small></div>
-  <div class="mini"><span>звонков <b data-k="calls">0</b></span><span>СМС <b data-k="sms">0</b></span><span>оценка <b data-k="score">—</b></span></div>
-</div><div class="desk off" data-port="4">
-  <span class="status">…</span><div class="beam"></div><div class="bubble"></div>
-  <div class="scene"><svg viewBox="0 0 200 176" aria-hidden="true">
-  <g class="op">
-    <rect class="screen" x="62" y="34" width="76" height="50" rx="6"/>
-    <g class="wave" transform="translate(72 44)">
-      <rect x="0" y="0" width="5" height="30" rx="2"/><rect x="8" y="0" width="5" height="30" rx="2"/>
-      <rect x="16" y="0" width="5" height="30" rx="2"/><rect x="24" y="0" width="5" height="30" rx="2"/>
-      <rect x="32" y="0" width="5" height="30" rx="2"/><rect x="40" y="0" width="5" height="30" rx="2"/>
-      <rect x="48" y="0" width="5" height="30" rx="2"/></g>
-    <rect x="96" y="84" width="8" height="10" fill="#1b2a47"/>
-    <g class="op-body">
-      <path d="M70 150 Q70 112 100 110 Q130 112 130 150 Z" fill="#16284a" stroke="rgba(120,190,255,.35)"/>
-      <g class="op-head"><circle cx="100" cy="92" r="16" fill="#e9c9a8"/>
-        <path d="M84 90 Q84 72 100 72 Q116 72 116 90 Q112 80 100 80 Q88 80 84 90Z" fill="#2a1640"/>
-        <path d="M83 92 Q83 70 100 70 Q117 70 117 92" fill="none" stroke="#35d6ff" stroke-width="2.4"/>
-        <rect x="80" y="88" width="6" height="11" rx="3" fill="#35d6ff"/><rect x="114" y="88" width="6" height="11" rx="3" fill="#35d6ff"/>
-        <path d="M84 99 Q88 108 97 106" fill="none" stroke="#35d6ff" stroke-width="1.8"/></g>
-      <rect class="arm l" x="74" y="120" width="12" height="26" rx="6" fill="#1e3763"/>
-      <rect class="arm r" x="114" y="120" width="12" height="26" rx="6" fill="#1e3763"/>
+  <rect class="emptychair" x="421" y="306" width="60" height="80" rx="16"/>
+  <polygon points="339.6,379.2 445.0,431.9 445.0,465.9 339.6,413.2" fill="#27407c" /><polygon points="494.6,407.1 445.0,431.9 445.0,465.9 494.6,441.1" fill="#1d3266" /><polygon points="389.2,354.4 494.6,407.1 445.0,431.9 339.6,379.2" fill="#3a5aa6" /><polygon points="417.1,351.6 449.3,367.8 449.3,393.8 417.1,377.6" fill="#0c152b" /><polygon points="452.4,366.2 449.3,367.8 449.3,393.8 452.4,392.2" fill="#0c152b" /><polygon points="420.2,350.1 452.4,366.2 449.3,367.8 417.1,351.6" fill="#101c38" /><polygon points="432.0,406.5 441.9,411.5 441.9,415.5 432.0,410.5" fill="#0c152b" /><polygon points="458.0,403.4 441.9,411.5 441.9,415.5 458.0,407.4" fill="#0c152b" /><polygon points="448.1,398.5 458.0,403.4 441.9,411.5 432.0,406.5" fill="#101c38" />
+  <circle class="lidglow" cx="433" cy="373" r="4"/>
+  <g class="phone" style="transform-origin:445px 401px"><circle class="phoneled" cx="445" cy="401" r="3"/></g>
+  <g class="marker" transform="translate(451 238)">
+    <g class="bob"><polygon points="0,-16 9,0 0,16 -9,0"/><polygon class="shade" points="0,-16 9,0 0,16"/></g>
+    <g class="wave" transform="translate(-21 24)"><rect x="0" y="0" width="4" height="14" rx="2"/><rect x="6" y="0" width="4" height="14" rx="2"/><rect x="12" y="0" width="4" height="14" rx="2"/><rect x="18" y="0" width="4" height="14" rx="2"/><rect x="24" y="0" width="4" height="14" rx="2"/><rect x="30" y="0" width="4" height="14" rx="2"/><rect x="36" y="0" width="4" height="14" rx="2"/></g>
+    <text class="status" y="-28">…</text>
+    <text class="name" y="-48">Олена</text>
+  </g>
+  <text class="sub" x="392" y="470">слот 3</text>
+  <rect class="hit" x="351" y="178" width="200" height="302"/>
+</g><g><polygon points="141.2,327.8 190.8,352.6 190.8,456.6 141.2,431.8" fill="#182c5a" /><polygon points="246.6,324.7 190.8,352.6 190.8,456.6 246.6,428.7" fill="#12234a" /><polygon points="197.0,299.9 246.6,324.7 190.8,352.6 141.2,327.8" fill="#2a4480" /><circle class="led d0" cx="239" cy="340" r="2"/><circle class="led d1" cx="246" cy="344" r="2"/><circle class="led d2" cx="253" cy="347" r="2"/><circle class="led d3" cx="260" cy="351" r="2"/><circle class="led d4" cx="239" cy="354" r="2"/><circle class="led d0" cx="246" cy="358" r="2"/><circle class="led d1" cx="253" cy="361" r="2"/><circle class="led d2" cx="260" cy="365" r="2"/><circle class="led d3" cx="239" cy="368" r="2"/><circle class="led d4" cx="246" cy="372" r="2"/><circle class="led d0" cx="253" cy="375" r="2"/><circle class="led d1" cx="260" cy="379" r="2"/><circle class="led d2" cx="239" cy="382" r="2"/><circle class="led d3" cx="246" cy="386" r="2"/><circle class="led d4" cx="253" cy="389" r="2"/><circle class="led d0" cx="260" cy="393" r="2"/><circle class="led d1" cx="239" cy="396" r="2"/><circle class="led d2" cx="246" cy="400" r="2"/><circle class="led d3" cx="253" cy="403" r="2"/><circle class="led d4" cx="260" cy="407" r="2"/></g><g><polygon points="990.6,388.9 1021.6,404.4 1021.6,450.4 990.6,434.9" fill="#22396f" /><polygon points="1052.6,388.9 1021.6,404.4 1021.6,450.4 1052.6,434.9" fill="#1a2d5a" /><polygon points="1021.6,373.4 1052.6,388.9 1021.6,404.4 990.6,388.9" fill="#34508f" /><polygon points="1000.5,360.9 1021.6,371.4 1021.6,399.4 1000.5,388.9" fill="#35d6ff" opacity=".7"/><polygon points="1042.7,360.9 1021.6,371.4 1021.6,399.4 1042.7,388.9" fill="#1e9bd0" opacity=".7"/><polygon points="1021.6,350.4 1042.7,360.9 1021.6,371.4 1000.5,360.9" fill="#9befff" opacity=".7"/></g><g class="desk off" data-port="4" tabindex="0">
+  <ellipse class="aura" cx="631" cy="534" rx="96" ry="44"/>
+  <g class="op" transform="translate(631 500) scale(1.45) translate(-631 -500)">
+    <rect class="chair" x="610" y="426" width="42" height="56" rx="12"/>
+    <g class="op-body" style="transform-origin:631px 500px">
+      <path d="M608 492 Q608 450 631 448 Q654 450 654 492 Z" fill="#ff6a5a"/>
+      <rect class="arm l" x="604" y="460" width="10" height="26" rx="5" fill="#ff6a5a"/>
+      <rect class="arm r" x="648" y="460" width="10" height="26" rx="5" fill="#ff6a5a"/>
+      <g class="op-head" style="transform-origin:631px 448px">
+        <circle cx="631" cy="434" r="14" fill="#f0cdaa"/>
+        <path d="M616 434 Q615 416 631 416 Q647 416 646 434 Q641 424 631 424 Q621 424 616 434Z" fill="#c9a227"/>
+        <circle cx="626" cy="435" r="1.6" fill="#1a1a2a"/><circle cx="636" cy="435" r="1.6" fill="#1a1a2a"/>
+        <path class="mouth" d="M627 441 Q631 444 635 441"/>
+        <path d="M616 434 Q616 414 631 414 Q646 414 646 434" class="headset"/>
+        <rect x="612" y="429" width="6" height="11" rx="3" class="ear"/><rect x="644" y="429" width="6" height="11" rx="3" class="ear"/>
+        <path d="M615 439 Q618 447 626 445" class="headset thin"/>
+      </g>
     </g>
-    <g class="phone"><rect x="144" y="120" width="16" height="24" rx="4" fill="#0e1830" stroke="var(--c)"/>
-      <circle cx="152" cy="139" r="1.6" fill="var(--c)"/></g>
   </g>
-  <path d="M22 148 H178 L190 170 H10 Z" fill="#0c1730" stroke="rgba(120,190,255,.4)"/>
-  <rect x="10" y="170" width="180" height="5" rx="2" fill="#081022"/>
-</svg></div>
-  <div class="who"><span class="name">Анна</span> <small>линия 4</small></div>
-  <div class="mini"><span>звонков <b data-k="calls">0</b></span><span>СМС <b data-k="sms">0</b></span><span>оценка <b data-k="score">—</b></span></div>
-</div></div>
-    <div class="quick" id="quick"></div>
-  </div>
+  <rect class="emptychair" x="601" y="396" width="60" height="80" rx="16"/>
+  <polygon points="519.4,469.1 624.8,521.8 624.8,555.8 519.4,503.1" fill="#27407c" /><polygon points="674.4,497.0 624.8,521.8 624.8,555.8 674.4,531.0" fill="#1d3266" /><polygon points="569.0,444.3 674.4,497.0 624.8,521.8 519.4,469.1" fill="#3a5aa6" /><polygon points="596.9,441.6 629.1,457.7 629.1,483.7 596.9,467.6" fill="#0c152b" /><polygon points="632.2,456.1 629.1,457.7 629.1,483.7 632.2,482.1" fill="#0c152b" /><polygon points="600.0,440.0 632.2,456.1 629.1,457.7 596.9,441.6" fill="#101c38" /><polygon points="611.8,496.4 621.7,501.4 621.7,505.4 611.8,500.4" fill="#0c152b" /><polygon points="637.8,493.3 621.7,501.4 621.7,505.4 637.8,497.3" fill="#0c152b" /><polygon points="627.9,488.4 637.8,493.3 621.7,501.4 611.8,496.4" fill="#101c38" />
+  <circle class="lidglow" cx="613" cy="463" r="4"/>
+  <g class="phone" style="transform-origin:625px 491px"><circle class="phoneled" cx="625" cy="491" r="3"/></g>
+  <g class="marker" transform="translate(631 328)">
+    <g class="bob"><polygon points="0,-16 9,0 0,16 -9,0"/><polygon class="shade" points="0,-16 9,0 0,16"/></g>
+    <g class="wave" transform="translate(-21 24)"><rect x="0" y="0" width="4" height="14" rx="2"/><rect x="6" y="0" width="4" height="14" rx="2"/><rect x="12" y="0" width="4" height="14" rx="2"/><rect x="18" y="0" width="4" height="14" rx="2"/><rect x="24" y="0" width="4" height="14" rx="2"/><rect x="30" y="0" width="4" height="14" rx="2"/><rect x="36" y="0" width="4" height="14" rx="2"/></g>
+    <text class="status" y="-28">…</text>
+    <text class="name" y="-48">Анна</text>
+  </g>
+  <text class="sub" x="572" y="559">слот 4</text>
+  <rect class="hit" x="531" y="268" width="200" height="302"/>
+</g><g><polygon points="575.2,622.8 606.2,638.3 606.2,664.3 575.2,648.8" fill="#2a1e18" /><polygon points="637.2,622.8 606.2,638.3 606.2,664.3 637.2,648.8" fill="#211712" /><polygon points="606.2,607.3 637.2,622.8 606.2,638.3 575.2,622.8" fill="#3a2a22" /><ellipse class="leaf" cx="597" cy="605" rx="9" ry="20" transform="rotate(-28 597 619)"/><ellipse class="leaf" cx="615" cy="605" rx="9" ry="20" transform="rotate(28 615 619)"/><ellipse class="leaf" cx="606" cy="597" rx="9" ry="20" transform="rotate(0 606 611)"/><ellipse class="leaf" cx="602" cy="609" rx="9" ry="20" transform="rotate(-12 602 623)"/><ellipse class="leaf" cx="611" cy="610" rx="9" ry="20" transform="rotate(14 611 624)"/></g></svg><div class="say" data-port="1" style="left:52.6%;top:11.7%"></div><div class="say" data-port="2" style="left:67.6%;top:24.6%"></div><div class="say" data-port="3" style="left:37.6%;top:24.6%"></div><div class="say" data-port="4" style="left:52.6%;top:37.4%"></div><div class="toasts" id="toasts"></div></div>
+  <div class="dock" id="dock"></div>
 </div>
 <div class="veil" id="veil"></div>
 <div class="drawer" id="drawer">
@@ -295,7 +324,7 @@ html.embed .shell { grid-template-columns: 1fr; } html.embed aside { display:non
 <script>
 const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-let S = null, sel = 0, tab = 'live', frame = '';
+let S = null, prev = null, sel = 0, tab = 'live', frame = '';
 const OUT = {sms:'согласие на СМС', callback:'перезвон', transfer:'оператору', interested:'интерес', refused:'отказ',
              dnc:'не звонить', wrong_person:'не тот человек', no_dialog:'разговора не было', hangup:'положил трубку'};
 const ST = {calling:'набор', talking:'разговор', done:'состоялся', noanswer:'не ответил', busy:'занято', failed:'сбой', stopped:'остановлен'};
@@ -308,41 +337,59 @@ async function post(url, data) { alert('Это демо-снимок: дейст
   if (err) alert(err); else if (!r.ok) alert('Действие не выполнено (' + r.status + ')');
   tick(); return ok;
 }
+function toast(text) {
+  const t = document.createElement('div'); t.className = 'toast'; t.textContent = text;
+  $('#toasts').appendChild(t); setTimeout(() => t.remove(), 5300);
+}
 
 function deskState(d) {
   if (!S.service) return ['off', 'служба не запущена'];
+  if (!d.sim) return ['off', 'вакансия · вставьте SIM'];
   if (d.error) return ['error', 'сбой порта'];
-  if (!d.sim) return ['off', 'слот свободен'];
   if (!d.ready) return ['error', 'нет сети'];
-  if (d.call) return d.call.answered ? ['talking', 'в разговоре'] : ['ringing', 'набирает'];
+  if (d.call) return d.call.answered ? ['talking', 'в разговоре'] : ['ringing', 'набирает номер'];
   return ['online', S.campaigns.some(c => c.status === 'running') ? (S.in_hours ? 'ждёт звонка' : 'вне часов') : 'на линии'];
 }
 
+function events() {   // что изменилось с прошлого опроса — всплывающие уведомления, как в игре
+  if (!prev) return;
+  for (const d of S.desks) {
+    const was = prev.desks.find(x => x.port === d.port);
+    if (d.call && !was.call) toast(`📞 ${d.name} набирает: ${d.call.name}`);
+    if (d.call && was.call && d.call.answered && !was.call.answered) toast(`🟢 ${d.name}: клиент ответил`);
+    if (!d.call && was.call) { const c = d.calls[0];
+      toast(c ? `${c.outcome === 'sms' ? '✉️' : c.status === 'done' ? '✅' : '☎️'} ${d.name}: ${OUT[c.outcome] || ST[c.status] || 'звонок окончен'}` : `${d.name}: звонок окончен`); }
+  }
+  if (S.today.sms > prev.today.sms) toast('✉️ +1 согласие на СМС');
+  if (S.today.transfer > prev.today.transfer) toast('🤝 клиент передан оператору');
+}
+
 function render() {
-  const t = S.today;
-  $('#hud').innerHTML = [['calls','звонков'],['answered','разговоров'],['sms','согласий на СМС'],['transfer','оператору'],
-    ['refused','отказов']].map(([k, l]) => `<div class="chip"><b>${t[k]}</b><span>${l}</span></div>`).join('') +
-    `<div class="chip"><b>$${t.cost.toFixed(2)}</b><span>расход на ИИ</span></div><div class="grow"></div>
-     <div class="chip"><b>${S.operator_online ? '🟢' : '⚪️'}</b><span>оператор-человек</span></div>`;
-  $('#roomnote').textContent = S.service ? (S.in_hours ? 'часы звонков: можно звонить' : 'вне часов звонков — кампании ждут') : 'служба звонков не запущена';
+  const t = S.today, goal = Math.max(1, S.goal || 30);
+  $('#topbar').innerHTML = `<div class="title">Офис</div>
+    <div class="goal"><div class="row"><span>План дня: ${t.calls} из ${goal} звонков</span><span>${S.in_hours ? 'рабочие часы' : 'вне часов звонков'}</span></div>
+      <div class="track"><i style="width:${Math.min(100, 100 * t.calls / goal)}%"></i></div></div>
+    <div class="stat"><div class="ico">✉️</div><div><b>${t.sms}</b><span>согласий</span></div></div>
+    <div class="stat"><div class="ico">⭐</div><div><b>${t.score ?? '—'}</b><span>оценка</span></div></div>
+    <div class="stat"><div class="ico">💰</div><div><b>$${t.cost.toFixed(2)}</b><span>расход</span></div></div>
+    <div class="stat"><div class="ico">${S.operator_online ? '🟢' : '⚪️'}</div><div><b>${S.operator_online ? 'на месте' : 'нет'}</b><span>человек-оператор</span></div></div>`;
+  for (const k of ['calls', 'answered', 'sms', 'transfer']) $('#b-' + k).textContent = t[k];
   for (const d of S.desks) {
     const el = $(`.desk[data-port="${d.port}"]`), [cls, label] = deskState(d);
-    el.className = 'desk ' + cls + (sel === d.port ? ' sel' : '');
+    el.setAttribute('class', 'desk ' + cls + (sel === d.port ? ' sel' : ''));
     $('.status', el).textContent = label;
-    $('.name', el).textContent = d.sim ? d.name : 'Свободный стол';
-    $('.who small', el).innerHTML = d.call ? esc(d.call.name) : (d.sim ? esc(d.network || 'SIM в сети') + ' · сигнал ' + d.signal + '/31' : 'вставьте SIM-карту в слот ' + d.port);
-    for (const k of ['calls', 'sms']) $(`[data-k=${k}]`, el).textContent = d.stats[k];
-    $('[data-k=score]', el).textContent = d.stats.score ?? '—';
-    const b = $('.bubble', el), last = d.call && d.call.transcript.filter(x => x[1]).slice(-1)[0];
-    if (last) { b.textContent = last[1]; b.className = 'bubble show' + (last[0] === 'bot' ? '' : ' peer'); } else b.className = 'bubble';
+    $('.name', el).textContent = d.sim ? d.name : 'Свободное место';
+    $('.sub', el).textContent = d.call ? d.call.name.slice(0, 34) : d.sim ? `слот ${d.port} · ${d.network || 'SIM'} · сигнал ${d.signal}/31 · звонков ${d.stats.calls}` : `слот ${d.port}`;
+    const b = $(`.say[data-port="${d.port}"]`), last = d.call && d.call.transcript.filter(x => x[1]).slice(-1)[0];
+    if (last) { b.textContent = last[1].slice(0, 120); b.className = 'say show' + (last[0] === 'bot' ? '' : ' peer'); } else b.className = 'say';
   }
-  const run = S.campaigns.filter(c => c.status === 'running').length;
-  $('#quick').innerHTML =
-    `<button onclick="openDesk(${(S.desks.find(d => d.sim) || S.desks[0]).port}, 'control')">▶ Управление обзвоном${run ? ' · идёт ' + run : ''}</button>
-     <button class="ghost" onclick="post('/operator/toggle')">${S.operator_online ? 'Оператор: уйти с линии' : 'Оператор: встать на линию'}</button>
-     <button class="ghost" onclick="openFrame('parse.html', 'Парсинг')">Парсинг${S.parse ? ' · ' + S.parse.done + '/' + S.parse.total : ''}</button>
-     <button class="ghost" onclick="openFrame('analysis.html', 'Анализ и личности')">Анализ${S.analysis ? ' · ' + S.analysis.done + '/' + S.analysis.total : ''}</button>
-     <button class="ghost" onclick="openFrame('analytics.html', 'Аналитика')">Сводка</button>`;
+  const run = S.campaigns.filter(c => c.status === 'running').length, first = (S.desks.find(d => d.sim) || S.desks[0]).port;
+  $('#dock').innerHTML =
+    `<button onclick="openDesk(${first}, 'control')">▶ Управление обзвоном${run ? ' · идёт ' + run : ''}</button>
+     <button class="ghost" onclick="post('/operator/toggle')">${S.operator_online ? 'Я ухожу с линии' : 'Я на линии (принимаю переводы)'}</button>
+     <button class="ghost" onclick="openFrame('parse.html', 'Парсинг')">🔎 Парсинг${S.parse ? ' · ' + S.parse.done + '/' + S.parse.total : ''}</button>
+     <button class="ghost" onclick="openFrame('analysis.html', 'Анализ и личности')">🧠 Анализ${S.analysis ? ' · ' + S.analysis.done + '/' + S.analysis.total : ''}</button>
+     <button class="ghost" onclick="openFrame('analytics.html', 'Аналитика')">📈 Итоги</button>`;
   if (sel && !frame) renderDrawer();
 }
 
@@ -357,16 +404,19 @@ function renderDrawer(force) {
   const d = S.desks.find(x => x.port === sel); if (!d) return;
   if ($('#dbody').tagName === 'IFRAME') $('#dbody').outerHTML = '<div class="body" id="dbody"></div>';
   const [cls, label] = deskState(d);
-  $('#dtitle').innerHTML = `${esc(d.name)} · линия ${d.port} <span class="tag ${cls === 'online' ? 'ok' : cls === 'talking' ? 'cy' : cls === 'ringing' ? 'wait' : cls === 'error' ? 'bad' : ''}">${label}</span>`;
+  $('#dtitle').innerHTML = `${esc(d.sim ? d.name : 'Свободное место')} · слот ${d.port} <span class="tag ${cls === 'online' ? 'ok' : cls === 'talking' ? 'cy' : cls === 'ringing' ? 'wait' : cls === 'error' ? 'bad' : ''}">${label}</span>`;
+  const body = $('#dbody');
+  if (!d.sim) { $('#dtabs').innerHTML = '';
+    body.innerHTML = `<p>За этим столом пока никто не работает: в слоте ${d.port} шлюза нет SIM-карты.</p>
+      <p class="muted">Вставьте SIM в слот ${d.port} при выключенном шлюзе — оператор появится за столом сам.</p>`; return; }
   $('#dtabs').innerHTML = [['live', 'Вживую'], ['today', 'Сегодня'], ['control', 'Управление']].map(([k, l]) =>
     `<button class="${tab === k ? 'on' : ''}" onclick="tab='${k}';renderDrawer(true)">${l}</button>`).join('');
-  const body = $('#dbody');
   if (tab === 'live') {
     const c = d.call;
-    if (!c) { body.innerHTML = '<p class="muted">Сейчас разговора нет. Когда оператор наберёт номер, здесь пойдёт разговор вживую.</p>'; return; }
+    if (!c) { body.innerHTML = '<p class="muted">Сейчас разговора нет. Когда оператор наберёт номер, здесь пойдёт разговор вживую.</p>'; body.dataset.tab = tab; return; }
     const typing = document.activeElement && document.activeElement.id === 'hint';
     const chat = `<div class="chat">` + c.transcript.filter(x => x[1]).map(x => `<div class="m ${x[0] === 'bot' ? 'bot' : 'peer'}">${esc(x[1])}</div>`).join('') + `</div>`;
-    if (typing && !force) { $('#livechat').innerHTML = chat; return; }
+    if (typing && !force && $('#livechat')) { $('#livechat').innerHTML = chat; return; }
     body.innerHTML = `<p><b>${esc(c.name)}</b> <span class="muted mono">${esc(c.number)}</span> ${c.kind === 'test' ? '<span class="tag">тест</span>' : ''}</p>
       <div id="livechat">${chat}</div>
       <div class="row2"><input id="hint" placeholder="Подсказать ИИ: что сказать клиенту сейчас">
@@ -377,10 +427,11 @@ function renderDrawer(force) {
     body.scrollTop = body.scrollHeight;
   } else if (tab === 'today') {
     const s = d.stats;
-    body.innerHTML = `<div class="grid" style="grid-template-columns:repeat(3,1fr)">
+    body.innerHTML = `<div class="grid" style="grid-template-columns:repeat(4,1fr)">
         <div class="tile"><div class="k">звонков</div><div class="v">${s.calls}</div></div>
         <div class="tile"><div class="k">разговоров</div><div class="v">${s.answered}</div></div>
-        <div class="tile"><div class="k">СМС</div><div class="v">${s.sms}</div></div></div>
+        <div class="tile"><div class="k">СМС</div><div class="v">${s.sms}</div></div>
+        <div class="tile"><div class="k">оценка</div><div class="v">${s.score ?? '—'}</div></div></div>
       <div class="calls-today">` + (d.calls.length ? d.calls.map(c =>
         `<a class="item" href="#" onclick="event.preventDefault();openFrame('call.html','Звонок #${c.id}')">
            <b>${esc(c.name || '—')}</b> ${c.kind === 'test' ? '<span class="tag">тест</span>' : ''}
@@ -411,15 +462,18 @@ function renderDrawer(force) {
 }
 
 async function tick() {
-  try { S = await (await fetch('api_floor.json')).json(); render(); } catch (e) {}
+  try { const next = await (await fetch('api_floor.json')).json(); prev = S; S = next; events(); render(); } catch (e) {}
 }
-$$('.desk').forEach(el => el.addEventListener('click', () => S && openDesk(+el.dataset.port)));
+$$('.desk').forEach(el => { el.addEventListener('click', () => S && openDesk(+el.dataset.port));
+  el.addEventListener('keydown', e => (e.key === 'Enter' || e.key === ' ') && S && openDesk(+el.dataset.port)); });
 $('#dclose').onclick = hide; $('#veil').onclick = hide;
 document.addEventListener('keydown', e => e.key === 'Escape' && hide());
 // боковое меню открывает разделы в панели — страница остаётся одна
 $$('aside nav a').forEach(a => { if (a.getAttribute('href') !== 'index.html') a.addEventListener('click', e => {
   e.preventDefault(); openFrame(a.getAttribute('href'), a.textContent); }); });
-setInterval(() => { $('#clock').textContent = new Date().toLocaleTimeString('ru-RU'); }, 1000);
+function clock() { const n = new Date(), h = n.getHours() % 12 + n.getMinutes() / 60, m = n.getMinutes();
+  $('#hh').setAttribute('transform', `rotate(${h * 30} 26 26)`); $('#mh').setAttribute('transform', `rotate(${m * 6} 26 26)`); }
+clock(); setInterval(clock, 20000);
 tick(); setInterval(tick, 1500);
 </script></main>
 </div><div style="position:fixed;right:14px;bottom:14px;z-index:9;background:#10244d;border:1px solid #35d6ff;color:#e9f1ff;padding:8px 14px;border-radius:12px;font:13px system-ui">Демо: данные вымышленные, кнопки не работают</div><script>document.addEventListener("submit",e=>{e.preventDefault();alert("Это демо-снимок: действия выполняются в настоящей админке.")},true)</script></body></html>
